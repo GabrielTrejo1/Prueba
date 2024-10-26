@@ -34,6 +34,9 @@ class Clientes():
             self.cliente.tblClientes.setItem(fila,5,QTableWidgetItem(str(item[5])))
             fila +=1
             
+    def limpiar_tabla(self):
+        self.cliente.tblClientes.setRowCount(0)
+            
     def valid(self):
         pass
 
@@ -50,6 +53,8 @@ class Clientes():
             self.cursor.execute(query,values)
             self.cursor.commit()
             print("Se creó un nuevo cliente")
+            self.limpiar_tabla()
+            self.cargar_datos_cliente()
         except Exception as e:
             print("No se pudo insertar el cliente:", e)
         finally:

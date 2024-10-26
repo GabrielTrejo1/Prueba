@@ -267,7 +267,8 @@
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 255, 0);</string>
+     <string notr="true">background-color: rgb(0, 255, 0);
+border-radius: 15px</string>
     </property>
     <property name="text">
      <string>Guardar</string>
@@ -353,5 +354,86 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtDireccion</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>408</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtTelefono</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>259</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtCorreo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtNombre</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>408</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>txtBuscar</sender>
+   <signal>returnPressed()</signal>
+   <receiver>btnBuscar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>845</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>908</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

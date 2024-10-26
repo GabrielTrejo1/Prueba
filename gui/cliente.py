@@ -5,14 +5,13 @@ from src.conexion import Conexion
 
 class Clientes():
     def __init__(self):
-        self.cliente = uic.loadUi("gui\cliente.ui")
+        self.cliente = uic.loadUi("gui\\cliente.ui")
         self.cliente.show()
         self.db = Conexion().conectar()
         self.cursor = self.db.cursor()
 
         self.initGui()
         
-
     def initGui(self):
         query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())"
         res = self.cursor.execute(query)
@@ -56,5 +55,6 @@ class Clientes():
             print("No se pudo insertar el cliente:", e)
         finally:
             self.cursor.close()
+            
 
         

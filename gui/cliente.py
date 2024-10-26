@@ -47,8 +47,8 @@ class Clientes():
             direccion = self.cliente.txtDireccion.text()
             fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             
-            query = "INSERT INTO Clientes (ID, nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?,?)"
-            values = (3,nombre,correo,telefono,direccion,fechaRegistro)
+            query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
+            values = (nombre,correo,telefono,direccion,fechaRegistro)
             self.cursor.execute(query,values)
             self.cursor.commit()
             print("Se creo un nuevo cliente")

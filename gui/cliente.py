@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem,QDateTimeEdit
+from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem
 from PyQt5.QtCore import QDate
 from src.conexion import Conexion
 
@@ -10,8 +10,16 @@ class Clientes():
         self.db = Conexion().conectar()
         self.cursor = self.db.cursor()
 
-        self.cliente.dtpFechaRegistro.setDate(QDate(2024,10,26))
+        self.initGui()
+        
+
+    def initGui(self):
+        query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())"
+        res = self.cursor.execute(query)
+        fecha_hoy= res.fetchall()
+        self.cliente.dtpFechaRegistro.setDate(QDate(fecha_hoy[0][2],fecha_hoy[0][1],fecha_hoy[0][0]))
         self.cargar_datos_cliente()
+        self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
         
     def cargar_datos_cliente(self):
         query="SELECT * FROM Clientes"
@@ -32,7 +40,21 @@ class Clientes():
         pass
     
     def nuevo_cliente(self):
-        pass
-    
-        
+        try:
+            nombre = self.cliente.txtNombre.text()
+            correo = self.cliente.txtCorreo.text()
+            telefono = self.cliente.txtTelefono.text()
+            direccion = self.cliente.txtDireccion.text()
+            fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
+            
+            query = "INSERT INTO Clientes (ID, nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?,?)"
+            values = (3,nombre,correo,telefono,direccion,fechaRegistro)
+            self.cursor.execute(query,values)
+            self.cursor.commit()
+            print("Se creo un nuevo cliente")
+        except Exception as e:
+            print("No se pudo insertar el cliente:", e)
+        finally:
+            self.cursor.close()
+
         

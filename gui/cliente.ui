@@ -6,18 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>580</height>
+    <width>1049</width>
+    <height>519</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(50, 50, 50);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>20</x>
       <y>20</y>
       <width>331</width>
       <height>81</height>
@@ -32,7 +35,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 127);</string>
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Clientes</string>
@@ -41,174 +44,252 @@
    <widget class="QLineEdit" name="txtNombre">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>129</y>
-      <width>221</width>
+      <x>120</x>
+      <y>160</y>
+      <width>201</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>120</y>
-      <width>91</width>
-      <height>41</height>
+      <x>20</x>
+      <y>160</y>
+      <width>47</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
-     <string>Nombre</string>
+     <string>Nombre:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>180</y>
-      <width>81</width>
+      <x>20</x>
+      <y>200</y>
+      <width>39</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
-     <string>Correo</string>
+     <string>Correo:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>220</y>
-      <width>101</width>
-      <height>41</height>
+      <x>20</x>
+      <y>240</y>
+      <width>48</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
-     <string>Teléfono</string>
+     <string>Teléfono:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>270</y>
-      <width>111</width>
-      <height>41</height>
+      <x>20</x>
+      <y>280</y>
+      <width>53</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
-     <string>Dirección</string>
+     <string>Dirección:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>320</y>
-      <width>161</width>
-      <height>41</height>
+      <width>80</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
-     <string>Fecha Registro</string>
+     <string>Fecha Registro:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtCorreo">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>180</y>
-      <width>221</width>
+      <x>120</x>
+      <y>200</y>
+      <width>201</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtTelefono">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>230</y>
-      <width>221</width>
+      <x>120</x>
+      <y>240</y>
+      <width>201</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtDireccion">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>120</x>
       <y>280</y>
-      <width>221</width>
+      <width>201</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="dtpFechaRegistro">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>330</y>
-      <width>221</width>
+      <x>120</x>
+      <y>320</y>
+      <width>201</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>60</y>
-      <width>81</width>
-      <height>41</height>
+      <x>440</x>
+      <y>80</y>
+      <width>35</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Buscar</string>
@@ -217,31 +298,45 @@
    <widget class="QLineEdit" name="txtBuscar">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>70</y>
+      <x>480</x>
+      <y>80</y>
       <width>291</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btnBuscar">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>60</y>
-      <width>81</width>
-      <height>41</height>
+      <x>780</x>
+      <y>80</y>
+      <width>75</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 85, 255);</string>
     </property>
     <property name="text">
      <string>Buscar</string>
@@ -250,24 +345,26 @@
    <widget class="QPushButton" name="btnGuardar">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>370</y>
+      <x>60</x>
+      <y>380</y>
       <width>101</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 255, 0);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 170, 0);</string>
     </property>
     <property name="text">
      <string>Guardar</string>
@@ -276,24 +373,29 @@
    <widget class="QPushButton" name="btnCancelar">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>370</y>
+      <x>200</x>
+      <y>380</y>
       <width>101</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 157, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(255, 0, 0);</string>
     </property>
     <property name="text">
      <string>Cancelar</string>
@@ -302,9 +404,9 @@
    <widget class="QTableWidget" name="tblClientes">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>130</y>
-      <width>791</width>
+      <x>340</x>
+      <y>120</y>
+      <width>701</width>
       <height>391</height>
      </rect>
     </property>
@@ -345,13 +447,110 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1280</width>
+     <width>1049</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtNombre</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>377</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtCorreo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>375</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtTelefono</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>252</x>
+     <y>377</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>298</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtDireccion</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>txtBuscar</sender>
+   <signal>returnPressed()</signal>
+   <receiver>btnBuscar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>712</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>822</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>20</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>20</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>true</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>true</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
 </ui>

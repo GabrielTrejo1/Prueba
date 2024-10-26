@@ -5,7 +5,7 @@ from src.conexion import Conexion
 
 class Clientes():
     def __init__(self):
-        self.cliente = uic.loadUi("gui\cliente.ui")
+        self.cliente = uic.loadUi("gui\\cliente.ui")
         self.cliente.show()
         self.db = Conexion().conectar()
         self.cursor = self.db.cursor()

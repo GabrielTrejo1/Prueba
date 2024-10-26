@@ -8,32 +8,36 @@ class Clientes():
         self.cliente = uic.loadUi("gui\\cliente.ui")
         self.cliente.show()
         self.db = Conexion().conectar()
-        self.cursor = self.db.cursor()
 
         self.initGui()
         
-    def initGui(self):
-        query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())"
-        res = self.cursor.execute(query)
-        fecha_hoy= res.fetchall()
-        self.cliente.dtpFechaRegistro.setDate(QDate(fecha_hoy[0][2],fecha_hoy[0][1],fecha_hoy[0][0]))
-        self.cargar_datos_cliente()
-        self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
+    def initGui(self): #Func. de inicio(lo que esta en esta funcion se va a ejecutar al iniciar el programa)
+            query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())" 
+            cursor= self.db.cursor()#Establecer fecha actual al dtpFechaRegistro
+            res = cursor.execute(query)
+            fecha_hoy= res.fetchall()
+            self.cliente.dtpFechaRegistro.setDate(QDate(fecha_hoy[0][2],fecha_hoy[0][1],fecha_hoy[0][0]))
+            self.cargar_datos_cliente()
+            self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
+            cursor.close()
         
-    def cargar_datos_cliente(self):
-        query="SELECT * FROM Clientes"
-        res = self.cursor.execute(query)
-        datos_clientes= res.fetchall()
-        self.cliente.tblClientes.setRowCount(len(datos_clientes))
-        fila = 0
-        for item in datos_clientes:
-            self.cliente.tblClientes.setItem(fila,0,QTableWidgetItem(str(item[0])))
-            self.cliente.tblClientes.setItem(fila,1,QTableWidgetItem(str(item[1])))
-            self.cliente.tblClientes.setItem(fila,2,QTableWidgetItem(str(item[2])))
-            self.cliente.tblClientes.setItem(fila,3,QTableWidgetItem(str(item[3])))
-            self.cliente.tblClientes.setItem(fila,4,QTableWidgetItem(str(item[4])))
-            self.cliente.tblClientes.setItem(fila,5,QTableWidgetItem(str(item[5])))
-            fila +=1
+    def cargar_datos_cliente(self): #Func. para llenar la tabla de Clientes.
+            query="SELECT * FROM Clientes"
+            cursor= self.db.cursor()
+            res = cursor.execute(query)
+            datos_clientes= res.fetchall()
+            self.cliente.tblClientes.setRowCount(len(datos_clientes))
+            fila = 0
+            for item in datos_clientes:
+                self.cliente.tblClientes.setItem(fila,0,QTableWidgetItem(str(item[0])))
+                self.cliente.tblClientes.setItem(fila,1,QTableWidgetItem(str(item[1])))
+                self.cliente.tblClientes.setItem(fila,2,QTableWidgetItem(str(item[2])))
+                self.cliente.tblClientes.setItem(fila,3,QTableWidgetItem(str(item[3])))
+                self.cliente.tblClientes.setItem(fila,4,QTableWidgetItem(str(item[4])))
+                self.cliente.tblClientes.setItem(fila,5,QTableWidgetItem(str(item[5])))
+                fila +=1
+            
+            cursor.close()
             
     def limpiar_tabla(self):
         self.cliente.tblClientes.setRowCount(0)
@@ -43,6 +47,8 @@ class Clientes():
     
     def nuevo_cliente(self):
         try:
+            cursor = self.db.cursor()
+            
             nombre = self.cliente.txtNombre.text()
             correo = self.cliente.txtCorreo.text()
             telefono = self.cliente.txtTelefono.text()
@@ -51,15 +57,12 @@ class Clientes():
             
             query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
             values = (nombre,correo,telefono,direccion,fechaRegistro)
-            self.cursor.execute(query,values)
-            self.cursor.commit()
+            cursor.execute(query,values)
+            cursor.commit()
             print("Se creo un nuevo cliente")
             self.limpiar_tabla()
             self.cargar_datos_cliente()
         except Exception as e:
             print("No se pudo insertar el cliente:", e)
         finally:
-            self.cursor.close()
-            
-
-        
+            cursor.close()

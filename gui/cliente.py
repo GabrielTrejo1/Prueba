@@ -20,7 +20,7 @@ class Clientes():
             self.cargar_datos_cliente()
             self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
             cursor.close()
-        
+       
     def cargar_datos_cliente(self): #Func. para llenar la tabla de Clientes.
             query="SELECT * FROM Clientes"
             cursor= self.db.cursor()

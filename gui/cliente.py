@@ -9,9 +9,7 @@ class Clientes():
         self.cliente.show()
         self.db = Conexion().conectar()
         self.cursor = self.db.cursor()
-
         self.initGui()
-        
 
     def initGui(self):
         query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())"
@@ -38,7 +36,7 @@ class Clientes():
             
     def valid(self):
         pass
-    
+
     def nuevo_cliente(self):
         try:
             nombre = self.cliente.txtNombre.text()
@@ -47,14 +45,12 @@ class Clientes():
             direccion = self.cliente.txtDireccion.text()
             fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             
-            query = "INSERT INTO Clientes (ID, nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?,?)"
-            values = (3,nombre,correo,telefono,direccion,fechaRegistro)
+            query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
+            values = (nombre,correo,telefono,direccion,fechaRegistro)
             self.cursor.execute(query,values)
             self.cursor.commit()
-            print("Se creo un nuevo cliente")
+            print("Se creó un nuevo cliente")
         except Exception as e:
             print("No se pudo insertar el cliente:", e)
         finally:
             self.cursor.close()
-
-        

@@ -9,14 +9,3 @@ class Conexion():
         
     def conectar(self):
         return self.con
-        
-'''try:
-            connection = pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=DB_Prueba;Trusted_Connection=Yes;')
-            print("Conexión Exitosa.")
-            cursor=connection.cursor()
-            cursor.execute("Select * FROM Clientes;")
-            row=cursor.fetchall()
-            for i in row:
-                print(f"{i}\n")  
-        except Exception as e:
-            print(e)'''

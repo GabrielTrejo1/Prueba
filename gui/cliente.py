@@ -1,5 +1,6 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem
+from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem,QDateTimeEdit
+from PyQt5.QtCore import QDate
 from src.conexion import Conexion
 
 class Clientes():
@@ -9,6 +10,7 @@ class Clientes():
         self.db = Conexion().conectar()
         self.cursor = self.db.cursor()
 
+        self.cliente.dtpFechaRegistro.setDate(QDate(2024,10,26))
         self.cargar_datos_cliente()
         
     def cargar_datos_cliente(self):

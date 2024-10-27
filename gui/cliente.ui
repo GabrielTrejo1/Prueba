@@ -410,7 +410,7 @@ border-radius: 25px;</string>
     </column>
     <column>
      <property name="text">
-      <string>Eliminar</string>
+      <string/>
      </property>
     </column>
    </widget>

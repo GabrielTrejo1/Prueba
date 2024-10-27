@@ -502,6 +502,9 @@ border-radius: 25px;</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuInicio">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="title">
      <string>Inicio</string>
     </property>

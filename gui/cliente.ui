@@ -14,7 +14,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>AC Automotores</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>AC Automotores.jpg</normaloff>AC Automotores.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#f4eee2</string>
@@ -414,30 +418,6 @@ border-radius: 25px;</string>
      </property>
     </column>
    </widget>
-   <widget class="QLabel" name="lblMensaje">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>490</y>
-      <width>331</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Liberation Serif</family>
-      <pointsize>20</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnEliminar">
     <property name="enabled">
      <bool>true</bool>
@@ -466,6 +446,125 @@ border-radius: 25px;</string>
     </property>
     <property name="text">
      <string>Eliminar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnEliminar_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>420</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>Modificar</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>10</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Filtrar por fecha de Registro</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dtpFechaDesde">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>48</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dtpFechaHasta">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>88</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>50</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Desde</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>88</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Hasta</string>
     </property>
    </widget>
   </widget>
@@ -599,18 +698,34 @@ border-radius: 25px;</string>
    </hints>
   </connection>
   <connection>
-   <sender>btnCancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>lblMensaje</receiver>
-   <slot>clear()</slot>
+   <sender>checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dtpFechaDesde</receiver>
+   <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>345</x>
-     <y>408</y>
+     <x>1089</x>
+     <y>45</y>
     </hint>
     <hint type="destinationlabel">
-     <x>351</x>
-     <y>516</y>
+     <x>1080</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dtpFechaHasta</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1113</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1098</x>
+     <y>118</y>
     </hint>
    </hints>
   </connection>

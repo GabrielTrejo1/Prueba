@@ -23,6 +23,8 @@ class Clientes():
             
             self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
             self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
+            self.cliente.btnBuscar.clicked.connect(self.buscar_cliente)
+            self.cliente.txtBuscar.textChanged.connect(self.buscar_cliente)
         except Exception as e:
             print("Error de conexion: ",e)
         finally:
@@ -53,9 +55,6 @@ class Clientes():
             
     def limpiar_tabla(self):
         self.cliente.tblClientes.setRowCount(0)
-        
-    def valid(self):
-        pass
     
     def nuevo_cliente(self):
         try:
@@ -66,20 +65,18 @@ class Clientes():
             telefono = self.cliente.txtTelefono.text()
             direccion = self.cliente.txtDireccion.text()
             fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
-            
-            query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
-            values = (nombre,correo,telefono,direccion,fechaRegistro)
-            
-            cursor.execute(query,values)
-            cursor.commit()
-            #print("Se creo un nuevo cliente")
-            self.cliente.lblMensaje.setText("Cliente agregado")
-            self.cliente.lblMensaje.setStyleSheet("color: green;")
-            self.limpiar_tabla()
-            self.cargar_datos_cliente()
+            valid = self.valid()
+            if valid == True:
+                query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
+                values = (nombre,correo,telefono,direccion,fechaRegistro)
+                
+                cursor.execute(query,values)
+                cursor.commit()
+                QMessageBox.information(self.cliente,"Cliente Agregado","Cliente agregado con éxito.")
+                self.limpiar_tabla()
+                self.cargar_datos_cliente()
         except Exception as e:
-            self.cliente.lblMensaje.setText("No se pudo agregar el cliente")
-            self.cliente.lblMensaje.setStyleSheet("color: red;")
+            QMessageBox.critical(self.cliente,"Error al agregar cliente",f"No se pudo agregar el cliente: {e}")
             print("No se pudo insertar el cliente:", e)
         finally:
             cursor.close()
@@ -112,11 +109,41 @@ class Clientes():
             finally:
                 cursor.close()
     
+    def buscar_cliente(self):
+        try:
+            nombre = self.cliente.txtBuscar.text().strip().lower()
+            # Añadir comodines para coincidencias parciales
+            query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ?"
+            values = (f"%{nombre}%",)
+            cursor = self.db.cursor()
+            res = cursor.execute(query, values)
+            datos_clientes = res.fetchall()
+
+            # Limpiar la tabla antes de cargar nuevos datos
+            self.cliente.tblClientes.setRowCount(0)
+
+            # Llenar la tabla con los nuevos resultados
+            self.cliente.tblClientes.setRowCount(len(datos_clientes))
+            for fila, item in enumerate(datos_clientes):
+                for columna, valor in enumerate(item):
+                    self.cliente.tblClientes.setItem(fila, columna, QTableWidgetItem(str(valor)))
+        except Exception as e:
+            QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
+            
+    def valid(self): #Valida que almenos un campo contenga texto.
+        nombre = self.cliente.txtNombre.text()
+        correo = self.cliente.txtCorreo.text()
+        telefono = self.cliente.txtTelefono.text()
+        direccion = self.cliente.txtDireccion.text()
+        if (nombre+correo+telefono+direccion) == "":
+            QMessageBox.warning(self.cliente, "Error", "Llene almenos un campo para agregar el cliente")
+            return False
+        return True
+        
     def actualizar_cliente(self):
         pass
     
-    def buscar_cliente(self):
+    def filtrar_fecha(self):
         pass
-        
         
         

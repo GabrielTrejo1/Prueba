@@ -12,27 +12,37 @@ class Clientes():
         self.initGui()
 
     def initGui(self):
-        query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())"
-        res = self.cursor.execute(query)
-        fecha_hoy= res.fetchall()
-        self.cliente.dtpFechaRegistro.setDate(QDate(fecha_hoy[0][2],fecha_hoy[0][1],fecha_hoy[0][0]))
-        self.cargar_datos_cliente()
-        self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
+        try:
+            query="SELECT day(GETDATE()),month(GETDATE()),year(GETDATE())"
+            res = self.cursor.execute(query)
+            fecha_hoy= res.fetchall()
+            self.cliente.dtpFechaRegistro.setDate(QDate(fecha_hoy[0][2],fecha_hoy[0][1],fecha_hoy[0][0]))
+            self.cargar_datos_cliente()
+            self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
+        except Exception as e:
+            print("No se pudo cargar la lista de clientes:", e)
+        finally:
+            self.cursor.close()
         
     def cargar_datos_cliente(self):
-        query="SELECT * FROM Clientes"
-        res = self.cursor.execute(query)
-        datos_clientes= res.fetchall()
-        self.cliente.tblClientes.setRowCount(len(datos_clientes))
-        fila = 0
-        for item in datos_clientes:
-            self.cliente.tblClientes.setItem(fila,0,QTableWidgetItem(str(item[0])))
-            self.cliente.tblClientes.setItem(fila,1,QTableWidgetItem(str(item[1])))
-            self.cliente.tblClientes.setItem(fila,2,QTableWidgetItem(str(item[2])))
-            self.cliente.tblClientes.setItem(fila,3,QTableWidgetItem(str(item[3])))
-            self.cliente.tblClientes.setItem(fila,4,QTableWidgetItem(str(item[4])))
-            self.cliente.tblClientes.setItem(fila,5,QTableWidgetItem(str(item[5])))
-            fila +=1
+        try:
+            query="SELECT * FROM Clientes"
+            res = self.cursor.execute(query)
+            datos_clientes= res.fetchall()
+            self.cliente.tblClientes.setRowCount(len(datos_clientes))
+            fila = 0
+            for item in datos_clientes:
+                self.cliente.tblClientes.setItem(fila,0,QTableWidgetItem(str(item[0])))
+                self.cliente.tblClientes.setItem(fila,1,QTableWidgetItem(str(item[1])))
+                self.cliente.tblClientes.setItem(fila,2,QTableWidgetItem(str(item[2])))
+                self.cliente.tblClientes.setItem(fila,3,QTableWidgetItem(str(item[3])))
+                self.cliente.tblClientes.setItem(fila,4,QTableWidgetItem(str(item[4])))
+                self.cliente.tblClientes.setItem(fila,5,QTableWidgetItem(str(item[5])))
+                fila +=1
+        except Exception as e:
+            print("No se pudo cargar la lista de clientes:", e)
+        finally:
+            self.cursor.close()
             
     def limpiar_tabla(self):
         self.cliente.tblClientes.setRowCount(0)

@@ -18,11 +18,15 @@ class Clientes():
         res = self.cursor.execute(query)
         fecha_hoy = res.fetchone()
         self.cliente.dtpFechaRegistro.setDate(QDate(fecha_hoy[2], fecha_hoy[1], fecha_hoy[0]))
+
         self.cargar_datos_cliente()
 
         self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
         self.cliente.btnBuscar.clicked.connect(self.buscar_cliente)
         self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
+
+        # Conectar la señal textChanged del campo de texto
+        self.cliente.txtBuscar.textChanged.connect(self.buscar_cliente)
 
     def cargar_datos_cliente(self):
         query = "SELECT * FROM Clientes"
@@ -52,14 +56,32 @@ class Clientes():
             QMessageBox.critical(self.cliente, "Error", f"No se pudo insertar el cliente: {e}")
 
     def buscar_cliente(self):
-        pass
+        try:
+            nombre = self.cliente.txtBuscar.text().strip().lower()
+            # Añadir comodines para coincidencias parciales
+            query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ?"
+            values = (f"%{nombre}%",)
+
+            res = self.cursor.execute(query, values)
+            datos_clientes = res.fetchall()
+
+            # Limpiar la tabla antes de cargar nuevos datos
+            self.cliente.tblClientes.setRowCount(0)
+
+            # Llenar la tabla con los nuevos resultados
+            self.cliente.tblClientes.setRowCount(len(datos_clientes))
+            for fila, item in enumerate(datos_clientes):
+                for columna, valor in enumerate(item):
+                    self.cliente.tblClientes.setItem(fila, columna, QTableWidgetItem(str(valor)))
+        except Exception as e:
+            QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
 
     def eliminar_cliente(self):
         try:
             row = self.cliente.tblClientes.currentRow()
             if row >= 0:
                 cliente_id = self.cliente.tblClientes.item(row,
-                                                           0).text()  # Asumiendo que el ID del cliente está en la primera columna
+                                                           0).text()
                 query = "DELETE FROM Clientes WHERE id_cliente = ?"
                 self.cursor.execute(query, (cliente_id,))
                 self.db.commit()

@@ -31,9 +31,9 @@ class Ventas():
         finally:
             cursor.close()
        
-    def cargar_ventas(self): #Func. para llenar la tabla de Clientes.
+    def cargar_ventas(self): #Función para llenar la tabla de Ventas
             try:
-                query = "SELECT V.ID, C.nombre FROM VENTAS AS V INNER JOIN CLIENTES AS C ON V.id_cliente = C.ID"
+                query = "SELECT V.ID, C.nombre, V.fecha_venta FROM VENTAS AS V INNER JOIN CLIENTES AS C ON V.id_cliente = C.ID"
                 cursor = self.db.cursor()
                 res = cursor.execute(query)
                 datos_ventas = res.fetchall()
@@ -44,8 +44,8 @@ class Ventas():
                 for item in datos_ventas:
                     self.ventas.tblVentas.setItem(fila,0,QTableWidgetItem(str(item[0])))
                     self.ventas.tblVentas.setItem(fila,1,QTableWidgetItem(str(item[1])))
-                    # self.ventas.tblVentas.setItem(fila,2,QTableWidgetItem(str(item[2])))
-                    # self.ventas.tblVentas.setItem(fila,3,QTableWidgetItem(str(item[3])))
+                    self.ventas.tblVentas.setItem(fila,2,QTableWidgetItem("Nada"))
+                    self.ventas.tblVentas.setItem(fila,3,QTableWidgetItem(str(item[2])))
                     # self.ventas.tblVentas.setItem(fila,4,QTableWidgetItem(str(item[4])))
                     # self.ventas.tblVentas.setItem(fila,5,QTableWidgetItem(str(item[5])))
                     fila +=1

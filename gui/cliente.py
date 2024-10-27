@@ -22,6 +22,7 @@ class Clientes():
             self.cargar_datos_cliente()
             
             self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
+            self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
         except Exception as e:
             print("Error de conexion: ",e)
         finally:
@@ -71,11 +72,51 @@ class Clientes():
             
             cursor.execute(query,values)
             cursor.commit()
-            print("Se creo un nuevo cliente")
-            
+            #print("Se creo un nuevo cliente")
+            self.cliente.lblMensaje.setText("Cliente agregado")
+            self.cliente.lblMensaje.setStyleSheet("color: green;")
             self.limpiar_tabla()
             self.cargar_datos_cliente()
         except Exception as e:
+            self.cliente.lblMensaje.setText("No se pudo agregar el cliente")
+            self.cliente.lblMensaje.setStyleSheet("color: red;")
             print("No se pudo insertar el cliente:", e)
         finally:
             cursor.close()
+            
+    def eliminar_cliente(self): #Para eliminar un cliente se debe seleccionar una fila y luego pulsar el boton Eliminar.
+        selected_row = self.cliente.tblClientes.currentRow()
+
+        if selected_row < 0:  # Verificar si no hay fila seleccionada
+            QMessageBox.warning(self.cliente, "Advertencia", "Por favor, seleccione un cliente para eliminar.")
+            return
+
+        # Confirmar eliminación
+        confirm = QMessageBox.question(self.cliente, "Confirmar Eliminación", "¿Está seguro de que desea eliminar este cliente?", QMessageBox.Yes | QMessageBox.No)
+
+        if confirm == QMessageBox.Yes:
+            try:
+                # Eliminar la fila seleccionada
+                #print(selected_row)
+                id_cliente=self.cliente.tblClientes.item(selected_row,0)
+                cursor = self.db.cursor()
+                query = "DELETE FROM Clientes WHERE ID = ?"
+                values = int(id_cliente.text())
+                cursor.execute(query,values)
+                cursor.commit()
+                self.cliente.tblClientes.removeRow(selected_row)
+                QMessageBox.information(self.cliente, "Éxito", "Cliente eliminado exitosamente.")
+            except Exception as e:
+                print("Error al eliminar el cliente: ",e)
+                QMessageBox.information(self.cliente, "Error", "No se pudo eliminar el cliente.")
+            finally:
+                cursor.close()
+    
+    def actualizar_cliente(self):
+        pass
+    
+    def buscar_cliente(self):
+        pass
+        
+        
+        

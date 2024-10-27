@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -405,6 +408,65 @@ border-radius: 25px;</string>
       <string>Fecha Registro</string>
      </property>
     </column>
+    <column>
+     <property name="text">
+      <string>Eliminar</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="lblMensaje">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>490</y>
+      <width>331</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnEliminar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>420</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 85, 0);</string>
+    </property>
+    <property name="text">
+     <string>Eliminar</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -439,6 +501,12 @@ border-radius: 25px;</string>
      <string>Ventas</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuInicio">
+    <property name="title">
+     <string>Inicio</string>
+    </property>
+   </widget>
+   <addaction name="menuInicio"/>
    <addaction name="menuClientes"/>
    <addaction name="menuVehiculos"/>
    <addaction name="menuVentas"/>
@@ -524,6 +592,22 @@ border-radius: 25px;</string>
     <hint type="destinationlabel">
      <x>908</x>
      <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>lblMensaje</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>345</x>
+     <y>408</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>516</y>
     </hint>
    </hints>
   </connection>

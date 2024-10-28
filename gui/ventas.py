@@ -8,27 +8,33 @@ class Ventas():
         self.venta = uic.loadUi("gui\\ventas.ui")
         self.venta.show()
         self.db = Conexion().conectar()
-        self.cursor = self.db.cursor()
+        self.cursor = self.db.cursor() #Se puede hacer esto o se puede crear un cursor nuevo en cada metodo.
         
     def initGui(self):
         pass
     
     def cargar_clientes(self):
+        #Llenar la tabla tblClientes con los datos de la BD
         pass
     
     def cargar_vehiculos(self):
+        #Llenar la tabla tblVehiculos con los datos de la BD
         pass
     
     def cargar_ventas(self):
+        #Llenar la tabla tblVentas con los datos de la BD
         pass
     
     def buscar_ventas(self):
+        #Buscar ventas igual que en clientes
         pass
     
     def buscar_clientes(self):
+        #Buscar cliente igual que en clientes
         pass
     
     def buscar_vehiculos(self):
+        #Buscar vehiculos igual que en clientes
         pass
     
     def valid(self):
@@ -38,5 +44,7 @@ class Ventas():
         pass
     
     def generar_venta(self):
+        #QMessageBox para confirmar la creación de la venta
+        #Insert de la venta
         pass
     

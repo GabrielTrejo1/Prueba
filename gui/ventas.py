@@ -1,0 +1,42 @@
+from PyQt5 import uic
+from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem
+from PyQt5.QtCore import QDate
+from src.conexion import Conexion
+
+class Ventas():
+    def __init__(self):
+        self.venta = uic.loadUi("gui\\ventas.ui")
+        self.venta.show()
+        self.db = Conexion().conectar()
+        self.cursor = self.db.cursor()
+        
+    def initGui(self):
+        pass
+    
+    def cargar_clientes(self):
+        pass
+    
+    def cargar_vehiculos(self):
+        pass
+    
+    def cargar_ventas(self):
+        pass
+    
+    def buscar_ventas(self):
+        pass
+    
+    def buscar_clientes(self):
+        pass
+    
+    def buscar_vehiculos(self):
+        pass
+    
+    def valid(self):
+        #Comprobar que se alla seleccionado un cliente y un vehiculo
+        #Comprobar que el precio de venta no sea menor a 0
+        # ? Comprobar que el vehiculo no este vendido
+        pass
+    
+    def generar_venta(self):
+        pass
+    

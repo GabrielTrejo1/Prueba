@@ -114,7 +114,7 @@ class Clientes():
             nombre = self.cliente.txtBuscar.text().strip().lower()
             # Añadir comodines para coincidencias parciales
             query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ?"
-            values = (f"%{nombre}%",)
+            values = (f"{nombre}%",)
             cursor = self.db.cursor()
             res = cursor.execute(query, values)
             datos_clientes = res.fetchall()

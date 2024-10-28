@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VehicleWindow</class>
+ <widget class="QMainWindow" name="VehicleWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>756</width>
+    <height>625</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Gestión de Vehículos</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="buscar">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>BUSCAR</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtMarca">
+      <property name="placeholderText">
+       <string>Marca</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtModelo">
+      <property name="placeholderText">
+       <string>Modelo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnBuscar">
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tblVehiculos">
+      <property name="columnCount">
+       <number>6</number>
+      </property>
+      <property name="horizontalHeaderLabels" stdset="0">
+       <stringlist>
+        <string>Patente</string>
+        <string>Marca</string>
+        <string>Modelo</string>
+        <string>Color</string>
+        <string>Carrocería</string>
+        <string>Combustible</string>
+       </stringlist>
+      </property>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_add">
+      <property name="text">
+       <string>Agregar Vehículo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtMarcaAdd">
+      <property name="placeholderText">
+       <string>Marca</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtModeloAdd">
+      <property name="placeholderText">
+       <string>Modelo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtColor">
+      <property name="placeholderText">
+       <string>Color</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtCarroceria">
+      <property name="placeholderText">
+       <string>Carrocería</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtMotor">
+      <property name="placeholderText">
+       <string>Motor</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtDetalles">
+      <property name="placeholderText">
+       <string>Detalles</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtPatente">
+      <property name="placeholderText">
+       <string>Patente</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="cmbCombustible">
+      <property name="currentText">
+       <string>Nafta</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Nafta</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Gasoil</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Eléctrico</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnAgregar">
+      <property name="text">
+       <string>Agregar Vehículo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnEliminar">
+      <property name="text">
+       <string>Eliminar Vehículo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblMensaje">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>756</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuinicio">
+    <property name="title">
+     <string>inicio</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuclientes">
+    <property name="title">
+     <string>clientes</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuventas">
+    <property name="title">
+     <string>ventas</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuvehiculos">
+    <property name="title">
+     <string>vehiculos</string>
+    </property>
+   </widget>
+   <addaction name="menuinicio"/>
+   <addaction name="menuclientes"/>
+   <addaction name="menuventas"/>
+   <addaction name="menuvehiculos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -92,3 +92,4 @@ class Clientes():
         except Exception as e:
             QMessageBox.critical(self.cliente, "Error", f"No se pudo eliminar el cliente: {e}")
 
+

@@ -379,8 +379,14 @@ border-radius: 25px;</string>
       <height>0</height>
      </size>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
     </property>
     <column>
      <property name="text">
@@ -567,6 +573,30 @@ border-radius: 25px;</string>
      <string>Hasta</string>
     </property>
    </widget>
+   <zorder>label</zorder>
+   <zorder>txtNombre</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
+   <zorder>txtCorreo</zorder>
+   <zorder>txtTelefono</zorder>
+   <zorder>txtDireccion</zorder>
+   <zorder>dtpFechaRegistro</zorder>
+   <zorder>label_7</zorder>
+   <zorder>txtBuscar</zorder>
+   <zorder>btnBuscar</zorder>
+   <zorder>btnGuardar</zorder>
+   <zorder>btnCancelar</zorder>
+   <zorder>btnEliminar</zorder>
+   <zorder>btnEliminar_2</zorder>
+   <zorder>checkBox</zorder>
+   <zorder>dtpFechaDesde</zorder>
+   <zorder>dtpFechaHasta</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
+   <zorder>tblClientes</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

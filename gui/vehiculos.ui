@@ -57,7 +57,7 @@
     <item>
      <widget class="QTableWidget" name="tblVehiculos">
       <property name="columnCount">
-       <number>6</number>
+       <number>9</number>
       </property>
       <property name="horizontalHeaderLabels" stdset="0">
        <stringlist>
@@ -69,12 +69,51 @@
         <string>Combustible</string>
        </stringlist>
       </property>
-      <column/>
-      <column/>
-      <column/>
-      <column/>
-      <column/>
-      <column/>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dominio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Marca</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Modelo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Motor</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Color</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Carroceria</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Tipo Combustible</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dealles</string>
+       </property>
+      </column>
      </widget>
     </item>
     <item>
@@ -184,7 +223,7 @@
      <x>0</x>
      <y>0</y>
      <width>756</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuinicio">

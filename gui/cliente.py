@@ -8,7 +8,8 @@ class Clientes():
         self.cliente = uic.loadUi("gui\\cliente.ui")
         self.cliente.show()
         self.db = Conexion().conectar()
-
+        self.insert_update = False  #False = Insert , True = Update
+        self.id_cliente = "" #Esta variable va a almacenar el ID del cliente que queremos modificar
         self.initGui()
         
     def initGui(self): #Func. de inicio(lo que esta en esta funcion se va a ejecutar al iniciar el programa)
@@ -21,10 +22,12 @@ class Clientes():
             
             self.cargar_datos_cliente()
             
-            self.cliente.btnGuardar.clicked.connect(self.nuevo_cliente)
+            self.cliente.btnGuardar.clicked.connect(self.guardar_cliente)
             self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
             self.cliente.btnBuscar.clicked.connect(self.buscar_cliente)
             self.cliente.txtBuscar.textChanged.connect(self.buscar_cliente)
+            self.cliente.btnModificar.clicked.connect(self.llenar_txtBox)
+            self.cliente.btnCancelar.clicked.connect(self.cancelar_modificar)
         except Exception as e:
             print("Error de conexion: ",e)
         finally:
@@ -109,6 +112,62 @@ class Clientes():
             finally:
                 cursor.close()
     
+    def llenar_txtBox(self): 
+        selected_row = self.cliente.tblClientes.currentRow()
+        if selected_row < 0:  # Verificar si no hay fila seleccionada
+            QMessageBox.warning(self.cliente, "Advertencia", "Por favor, seleccione un cliente para modificar.")
+            return
+
+        # Confirmar modificación
+        confirm = QMessageBox.question(self.cliente, "Confirmar Modificación", "¿Está seguro de que desea modifiar el cliente seleccionado?", QMessageBox.Yes | QMessageBox.No)
+        if confirm == QMessageBox.Yes:
+            self.insert_update = True #Cambio el estado para que al apretar el boton Guadar, se genere un Update
+            self.id_cliente = self.cliente.tblClientes.item(selected_row,0).text() #Guardo el ID del Cliente que quiero Modificar
+            self.cliente.txtNombre.setText(self.cliente.tblClientes.item(selected_row,1).text())
+            self.cliente.txtCorreo.setText(self.cliente.tblClientes.item(selected_row,2).text())
+            self.cliente.txtTelefono.setText(self.cliente.tblClientes.item(selected_row,3).text())
+            self.cliente.txtDireccion.setText(self.cliente.tblClientes.item(selected_row,4).text())
+            fecha_registro = self.cliente.tblClientes.item(selected_row,5).text().split('-')
+            self.cliente.dtpFechaRegistro.setDate(QDate(int(fecha_registro[0]),int(fecha_registro[1]),int(fecha_registro[2])))
+            self.cliente.lblModificar.setText("Modificando Cliente")
+    
+    def guardar_cliente(self):
+        if self.insert_update == False:
+            self.nuevo_cliente()
+        elif self.insert_update == True:
+            self.modificar_cliente()
+            self.insert_update = False
+    
+    def modificar_cliente(self):
+        try:
+            cursor = self.db.cursor()
+            
+            nombre = self.cliente.txtNombre.text()
+            correo = self.cliente.txtCorreo.text()
+            telefono = self.cliente.txtTelefono.text()
+            direccion = self.cliente.txtDireccion.text()
+            fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
+            valid = self.valid()
+            if valid == True:
+                query = "UPDATE Clientes SET nombre = ?, correo = ?, telefono = ?, direccion = ?, fecha_registro = ? WHERE ID = ?"
+                values = (nombre,correo,telefono,direccion,fechaRegistro, self.id_cliente)
+                
+                cursor.execute(query,values)
+                cursor.commit()
+                QMessageBox.information(self.cliente,"Cliente Modificado","Cliente modificado con éxito.")
+                self.limpiar_tabla()
+                self.cargar_datos_cliente()
+        except Exception as e:
+            QMessageBox.critical(self.cliente,"Error al modificar cliente",f"No se pudo modificar el cliente: {e}")
+            print("No se pudo modificar el cliente:", e)
+        finally:
+            cursor.close()
+            self.id_cliente = ""
+    
+    def cancelar_modificar(self):
+        self.insert_update = False
+
+        
     def buscar_cliente(self):
         try:
             nombre = self.cliente.txtBuscar.text().strip().lower()
@@ -135,15 +194,11 @@ class Clientes():
         correo = self.cliente.txtCorreo.text()
         telefono = self.cliente.txtTelefono.text()
         direccion = self.cliente.txtDireccion.text()
+        
         if (nombre+correo+telefono+direccion) == "":
             QMessageBox.warning(self.cliente, "Error", "Llene almenos un campo para agregar el cliente")
             return False
         return True
-        
-    def actualizar_cliente(self):
-        pass
     
     def filtrar_fecha(self):
         pass
-        
-        

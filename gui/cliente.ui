@@ -385,9 +385,23 @@ border-radius: 25px;</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
     <property name="sortingEnabled">
      <bool>true</bool>
     </property>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
     <column>
      <property name="text">
       <string>ID</string>
@@ -418,11 +432,36 @@ border-radius: 25px;</string>
       <string>Fecha Registro</string>
      </property>
     </column>
-    <column>
+    <item row="0" column="0">
      <property name="text">
-      <string/>
+      <string>1</string>
      </property>
-    </column>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>2</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>3</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>4</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>5</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>6</string>
+     </property>
+    </item>
    </widget>
    <widget class="QPushButton" name="btnEliminar">
     <property name="enabled">
@@ -454,7 +493,7 @@ border-radius: 25px;</string>
      <string>Eliminar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnEliminar_2">
+   <widget class="QPushButton" name="btnModificar">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -573,6 +612,28 @@ border-radius: 25px;</string>
      <string>Hasta</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblModificar">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>480</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Liberation Serif</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 170, 0)</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>txtNombre</zorder>
    <zorder>label_2</zorder>
@@ -590,13 +651,14 @@ border-radius: 25px;</string>
    <zorder>btnGuardar</zorder>
    <zorder>btnCancelar</zorder>
    <zorder>btnEliminar</zorder>
-   <zorder>btnEliminar_2</zorder>
+   <zorder>btnModificar</zorder>
    <zorder>checkBox</zorder>
    <zorder>dtpFechaDesde</zorder>
    <zorder>dtpFechaHasta</zorder>
    <zorder>label_8</zorder>
    <zorder>label_9</zorder>
    <zorder>tblClientes</zorder>
+   <zorder>lblModificar</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -772,6 +834,38 @@ border-radius: 25px;</string>
     <hint type="destinationlabel">
      <x>325</x>
      <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnGuardar</sender>
+   <signal>clicked()</signal>
+   <receiver>lblModificar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>406</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>526</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>lblModificar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>405</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>516</y>
     </hint>
    </hints>
   </connection>

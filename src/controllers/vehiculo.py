@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from PyQt5.QtCore import QDate
-from src.conexion import Conexion
+from models.conexion import Conexion
 
 class Vehiculos():
     def __init__(self):

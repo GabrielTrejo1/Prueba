@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import QApplication
-from gui.cliente import Clientes
-from gui.vehiculo import Vehiculos
-from gui.ventas import Ventas
+from controllers.cliente import Clientes
+from controllers.inicio import Inicio
+from controllers.vehiculo import Vehiculos
+from controllers.ventas import Ventas
 
 
 class App():
@@ -10,4 +11,5 @@ class App():
         self.cliente = Clientes()
         #self.vehiculo = Vehiculos()
         #self.venta = Ventas()
+        #self.inicio = Inicio()
         self.App.exec()

@@ -14,6 +14,7 @@ class Clientes():
         
     def initGui(self): #Func. de inicio(lo que esta en esta funcion se va a ejecutar al iniciar el programa)
         self.cargar_datos_cliente()
+        self.cliente.dtpFechaHasta.setDate(QDate.currentDate())
         self.cliente.dtpFechaRegistro.setDate(QDate.currentDate())
         self.cliente.btnGuardar.clicked.connect(self.guardar_cliente)
         self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
@@ -75,8 +76,6 @@ class Clientes():
             except Exception as e:
                 print("Error al eliminar el cliente: ",e)
                 QMessageBox.information(self.cliente, "Error", "No se pudo eliminar el cliente.")
-            finally:
-                selected_row = -1
     
     def llenar_txtBox(self): 
         selected_row = self.cliente.tblClientes.currentRow()

@@ -5,10 +5,9 @@ from models.conexion import Conexion
 
 class Ventas():
     def __init__(self):
-        self.venta = uic.loadUi("gui\\ventas.ui")
+        self.venta = uic.loadUi("src/gui/ventas.ui")
         self.venta.show()
-        self.db = Conexion().conectar()
-        self.cursor = self.db.cursor() #Se puede hacer esto o se puede crear un cursor nuevo en cada metodo.
+        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
         
     def initGui(self):
         pass

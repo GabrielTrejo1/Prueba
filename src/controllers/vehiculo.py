@@ -5,17 +5,15 @@ from models.conexion import Conexion
 
 class Vehiculos():
     def __init__(self):
-        self.vehiculo = uic.loadUi("gui\\vehiculos.ui")
+        self.vehiculo = uic.loadUi("src/gui/vehiculos.ui")
         self.vehiculo.show()
-        self.db = Conexion().conectar()
-        self.cursor = self.db.cursor()
+        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
 
         self.initGui()
 
     def initGui(self):
         query = "SELECT * FROM Vehiculos"
-        res = self.cursor.execute(query)
-        datos_vehiculos = res.fetchall()
+        datos_vehiculos = self.db.execute_query_fetchall(query)
 
         self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
         self.vehiculo.btnAgregar.clicked.connect(self.nuevo_vehiculo)
@@ -31,8 +29,7 @@ class Vehiculos():
 
     def cargar_datos_vehiculos(self):
         query = "SELECT * FROM Vehiculos"
-        res = self.cursor.execute(query)
-        datos_vehiculos = res.fetchall()
+        datos_vehiculos = self.db.execute_query_fetchall(query)
 
         self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
         for fila, item in enumerate(datos_vehiculos):
@@ -52,9 +49,8 @@ class Vehiculos():
 
             query = ("INSERT INTO Vehiculos (dominio, marca, modelo, motor, color, carroceria, tipo_combustible, detalles)"
                      " VALUES(?,?,?,?,?,?,?,?)")
-            valores = (dominio, marca, modelo, motor, color, carroceria, combustible, detalles)
-            self.cursor.execute(query, valores)
-            self.db.commit()
+            values = (dominio, marca, modelo, motor, color, carroceria, combustible, detalles)
+            self.db.execute_query(query,values)
             QMessageBox.information(self.vehiculo, "Información", "Se ha registrado el vehículo")
             self.cargar_datos_vehiculos()
         except Exception as e:
@@ -66,8 +62,7 @@ class Vehiculos():
             modelo = self.vehiculo.txtModelo.text().strip().lower()
             query = "SELECT * FROM Vehiculos WHERE Marca LIKE ? AND Modelo LIKE ?"
             values = (f"{marca}%", f"{modelo}%")
-            res = self.cursor.execute(query, values)
-            datos_vehiculos = res.fetchall()
+            datos_vehiculos = self.db.execute_query_fetchall(query,values)
 
               # Limpiar la tabla antes de cargar nuevos datos
             self.vehiculo.tblVehiculos.setRowCount(0)
@@ -85,8 +80,7 @@ class Vehiculos():
             if row >= 0:
                 vehiculo_id = self.vehiculo.tblVehiculos.item(row, 0).text()
                 query = "DELETE FROM Vehiculos WHERE ID = ?"
-                self.cursor.execute(query, (vehiculo_id,))
-                self.db.commit()
+                self.db.execute_query(query,vehiculo_id)
                 QMessageBox.information(self.vehiculo, "Éxito", "Vehiculo eliminado con éxito.")
                 self.cargar_datos_vehiculos()
             else:

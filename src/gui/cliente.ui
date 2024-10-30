@@ -62,7 +62,10 @@ color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color:rgb(244, 238, 226);
+border: none;
+border-bottom: 1px solid black;
+font: 12pt &quot;Liberation Serif&quot;;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -200,7 +203,10 @@ color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color:rgb(244, 238, 226);
+border: none;
+border-bottom: 1px solid black;
+font: 12pt &quot;Liberation Serif&quot;;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtTelefono">
@@ -213,7 +219,10 @@ color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color:rgb(244, 238, 226);
+border: none;
+border-bottom: 1px solid black;
+font: 12pt &quot;Liberation Serif&quot;;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtDireccion">
@@ -226,7 +235,10 @@ color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color:rgb(244, 238, 226);
+border: none;
+border-bottom: 1px solid black;
+font: 12pt &quot;Liberation Serif&quot;;</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="dtpFechaRegistro">
@@ -239,7 +251,10 @@ color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color:rgb(244, 238, 226);
+border: none;
+border-bottom: 1px solid black;
+font: 12pt &quot;Liberation Serif&quot;;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -277,7 +292,10 @@ color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color:rgb(244, 238, 226);
+border: none;
+border-bottom: 1px solid black;
+font: 12pt &quot;Liberation Serif&quot;;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnBuscar">
@@ -390,6 +408,9 @@ border-radius: 25px;</string>
     </property>
     <property name="dragEnabled">
      <bool>false</bool>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::ExtendedSelection</enum>
     </property>
     <property name="selectionBehavior">
      <enum>QAbstractItemView::SelectRows</enum>

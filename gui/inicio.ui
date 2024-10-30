@@ -14,7 +14,7 @@
    <string>Inicio</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255,255,255)</string>
+   <string notr="true">background-color: #f4eee2</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btnClientes">
@@ -31,8 +31,8 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
       <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
@@ -48,8 +48,24 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true"> QPushButton {
+                background-color: white;
+                color: #333;
+                padding: 10px;
+                border: 2px solid #ccc; /* Borde más grueso */
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: 500;
+                font-size: 14px; /* Tamaño de fuente */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            }
+            QPushButton:hover {
+                background-color: #e0d5cb;
+                color: #000;
+            }
+            QPushButton:pressed {
+                background-color: #d1c4b1; /* Color más oscuro al presionar */
+                border: 2px solid #bbb; /* Cambio de borde al presionar */
+            }</string>
     </property>
     <property name="text">
      <string>Clientes</string>
@@ -72,8 +88,8 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
       <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
@@ -89,8 +105,24 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true"> QPushButton {
+                background-color: white;
+                color: #333;
+                padding: 10px;
+                border: 2px solid #ccc; /* Borde más grueso */
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: 500;
+                font-size: 14px; /* Tamaño de fuente */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            }
+            QPushButton:hover {
+                background-color: #e0d5cb;
+                color: #000;
+            }
+            QPushButton:pressed {
+                background-color: #d1c4b1; /* Color más oscuro al presionar */
+                border: 2px solid #bbb; /* Cambio de borde al presionar */
+            }</string>
     </property>
     <property name="text">
      <string>Estado de vehículos</string>
@@ -113,8 +145,8 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
       <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
@@ -130,8 +162,24 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true"> QPushButton {
+                background-color: white;
+                color: #333;
+                padding: 10px;
+                border: 2px solid #ccc; /* Borde más grueso */
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: 500;
+                font-size: 14px; /* Tamaño de fuente */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            }
+            QPushButton:hover {
+                background-color: #e0d5cb;
+                color: #000;
+            }
+            QPushButton:pressed {
+                background-color: #d1c4b1; /* Color más oscuro al presionar */
+                border: 2px solid #bbb; /* Cambio de borde al presionar */
+            }</string>
     </property>
     <property name="text">
      <string>Servicios</string>
@@ -154,8 +202,8 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
       <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
@@ -171,8 +219,24 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true"> QPushButton {
+                background-color: white;
+                color: #333;
+                padding: 10px;
+                border: 2px solid #ccc; /* Borde más grueso */
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: 500;
+                font-size: 14px; /* Tamaño de fuente */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            }
+            QPushButton:hover {
+                background-color: #e0d5cb;
+                color: #000;
+            }
+            QPushButton:pressed {
+                background-color: #d1c4b1; /* Color más oscuro al presionar */
+                border: 2px solid #bbb; /* Cambio de borde al presionar */
+            }</string>
     </property>
     <property name="text">
      <string>Tipo financiamiento</string>
@@ -195,8 +259,8 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
       <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
@@ -212,8 +276,24 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true"> QPushButton {
+                background-color: white;
+                color: #333;
+                padding: 10px;
+                border: 2px solid #ccc; /* Borde más grueso */
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: 500;
+                font-size: 14px; /* Tamaño de fuente */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            }
+            QPushButton:hover {
+                background-color: #e0d5cb;
+                color: #000;
+            }
+            QPushButton:pressed {
+                background-color: #d1c4b1; /* Color más oscuro al presionar */
+                border: 2px solid #bbb; /* Cambio de borde al presionar */
+            }</string>
     </property>
     <property name="text">
      <string>Vehículos</string>
@@ -236,8 +316,8 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
       <italic>false</italic>
       <bold>true</bold>
       <underline>false</underline>
@@ -253,8 +333,24 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true"> QPushButton {
+                background-color: white;
+                color: #333;
+                padding: 10px;
+                border: 2px solid #ccc; /* Borde más grueso */
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: 500;
+                font-size: 14px; /* Tamaño de fuente */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            }
+            QPushButton:hover {
+                background-color: #e0d5cb;
+                color: #000;
+            }
+            QPushButton:pressed {
+                background-color: #d1c4b1; /* Color más oscuro al presionar */
+                border: 2px solid #bbb; /* Cambio de borde al presionar */
+            }</string>
     </property>
     <property name="text">
      <string>Ventas</string>
@@ -295,19 +391,17 @@ background-color: rgb(255,255,255);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>9</y>
-      <width>451</width>
-      <height>131</height>
+      <x>90</x>
+      <y>0</y>
+      <width>271</width>
+      <height>151</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>32</pointsize>
-     </font>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/logo/logo.jpg);</string>
     </property>
     <property name="text">
-     <string>INSERTAR LOGO</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -326,6 +420,8 @@ background-color: rgb(255,255,255);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../img/imagen.qrc"/>
+ </resources>
  <connections/>
 </ui>

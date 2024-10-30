@@ -2,6 +2,7 @@ from PyQt5 import uic
 from gui.cliente import Clientes
 from src.conexion import Conexion
 from PyQt5.QtCore import QDate
+from img.imagen import imagen
 
 class Inicio():
     def __init__(self):
@@ -9,7 +10,6 @@ class Inicio():
         self.clientes = None
         self.inicio = uic.loadUi("gui/inicio.ui")
         self.inicio.show()
-
         self.initGui()
 
     def initGui(self):

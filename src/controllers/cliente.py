@@ -5,7 +5,7 @@ from models.conexion import Conexion
 
 class Clientes():
     def __init__(self):
-        self.cliente = uic.loadUi("src/gui/cliente.ui")
+        self.cliente = uic.loadUi("src/gui/cliente_2.ui")
         self.cliente.show()
         self.db = Conexion()
         self.insert_update = False  #False = Insert , True = Update

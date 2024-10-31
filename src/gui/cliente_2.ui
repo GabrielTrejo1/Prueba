@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>604</height>
+    <height>679</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,14 +36,17 @@
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="1" column="1">
         <widget class="QLineEdit" name="txtBuscar">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">    QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
     }</string>
          </property>
         </widget>
@@ -159,7 +162,18 @@ color: black</string>
           <cursorShape>ArrowCursor</cursorShape>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid #b0a99f;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
          </property>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
@@ -350,28 +364,34 @@ color: black</string>
        </item>
        <item row="3" column="2" colspan="2">
         <widget class="QLineEdit" name="txtNombre">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">    QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
     }</string>
          </property>
         </widget>
        </item>
        <item row="7" column="2" colspan="2">
         <widget class="QLineEdit" name="txtTelefono">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">    QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
     }</string>
          </property>
         </widget>
@@ -399,7 +419,7 @@ color: black</string>
          </property>
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="cursor">
@@ -407,18 +427,14 @@ color: black</string>
          </property>
          <property name="styleSheet">
           <string notr="true">    QPushButton {
-        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
-        border: 2px solid #b0a99f; /* Color y grosor del borde */
-        border-radius: 15px; /* Bordes redondeados */
-        padding: 10px; /* Espaciado interno */
-        font-size: 16px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-        text-align: center; /* Centrar texto */
-        transition: background-color 0.3s; /* Transición suave para el hover */
+        background-color: #d6cfc3;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 10px;
     }
 
     QPushButton:hover {
-        background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+        background-color: #c1b1a4;
     }
 </string>
          </property>
@@ -453,7 +469,7 @@ color: black</string>
          </property>
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="cursor">
@@ -461,18 +477,14 @@ color: black</string>
          </property>
          <property name="styleSheet">
           <string notr="true">    QPushButton {
-        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
-        border: 2px solid #b0a99f; /* Color y grosor del borde */
-        border-radius: 15px; /* Bordes redondeados */
-        padding: 10px; /* Espaciado interno */
-        font-size: 16px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-        text-align: center; /* Centrar texto */
-        transition: background-color 0.3s; /* Transición suave para el hover */
+        background-color: #d6cfc3;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 10px;
     }
 
     QPushButton:hover {
-        background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+        background-color: #c1b1a4;
     }
 </string>
          </property>
@@ -547,14 +559,17 @@ color: black</string>
        </item>
        <item row="9" column="2" colspan="2">
         <widget class="QLineEdit" name="txtDireccion">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">    QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
     }</string>
          </property>
         </widget>
@@ -595,7 +610,7 @@ color: black</string>
         <widget class="QPushButton" name="btnGuardar">
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="cursor">
@@ -603,18 +618,14 @@ color: black</string>
          </property>
          <property name="styleSheet">
           <string notr="true">    QPushButton {
-        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
-        border: 2px solid #b0a99f; /* Color y grosor del borde */
-        border-radius: 15px; /* Bordes redondeados */
-        padding: 10px; /* Espaciado interno */
-        font-size: 16px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-        text-align: center; /* Centrar texto */
-        transition: background-color 0.3s; /* Transición suave para el hover */
+        background-color: #d6cfc3;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 10px;
     }
 
     QPushButton:hover {
-        background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+        background-color: #c1b1a4;
     }
 </string>
          </property>
@@ -625,28 +636,38 @@ color: black</string>
        </item>
        <item row="11" column="2" colspan="2">
         <widget class="QDateEdit" name="dtpFechaRegistro">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">QDateEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-    }</string>
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 0px;
+        padding: 8px;
+    }
+</string>
          </property>
         </widget>
        </item>
        <item row="5" column="2" colspan="2">
         <widget class="QLineEdit" name="txtCorreo">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">    QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
     }</string>
          </property>
         </widget>
@@ -655,7 +676,7 @@ color: black</string>
         <widget class="QPushButton" name="btnCancelar">
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="cursor">
@@ -663,18 +684,14 @@ color: black</string>
          </property>
          <property name="styleSheet">
           <string notr="true">    QPushButton {
-        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
-        border: 2px solid #b0a99f; /* Color y grosor del borde */
-        border-radius: 15px; /* Bordes redondeados */
-        padding: 10px; /* Espaciado interno */
-        font-size: 16px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-        text-align: center; /* Centrar texto */
-        transition: background-color 0.3s; /* Transición suave para el hover */
+        background-color: #d6cfc3;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 10px;
     }
 
     QPushButton:hover {
-        background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+        background-color: #c1b1a4;
     }
 </string>
          </property>

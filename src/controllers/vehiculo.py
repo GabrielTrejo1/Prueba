@@ -50,7 +50,7 @@ class Vehiculos():
             query = ("INSERT INTO Vehiculos (dominio, marca, modelo, motor, color, carroceria, tipo_combustible, detalles)"
                      " VALUES(?,?,?,?,?,?,?,?)")
             values = (dominio, marca, modelo, motor, color, carroceria, combustible, detalles)
-            self.db.execute_query(query,values)
+            self.db.execute_query(query, values)
             QMessageBox.information(self.vehiculo, "Información", "Se ha registrado el vehículo")
             self.cargar_datos_vehiculos()
         except Exception as e:
@@ -62,7 +62,7 @@ class Vehiculos():
             modelo = self.vehiculo.txtModelo.text().strip().lower()
             query = "SELECT * FROM Vehiculos WHERE Marca LIKE ? AND Modelo LIKE ?"
             values = (f"{marca}%", f"{modelo}%")
-            datos_vehiculos = self.db.execute_query_fetchall(query,values)
+            datos_vehiculos = self.db.execute_query_fetchall(query, values)
 
               # Limpiar la tabla antes de cargar nuevos datos
             self.vehiculo.tblVehiculos.setRowCount(0)
@@ -80,7 +80,7 @@ class Vehiculos():
             if row >= 0:
                 vehiculo_id = self.vehiculo.tblVehiculos.item(row, 0).text()
                 query = "DELETE FROM Vehiculos WHERE ID = ?"
-                self.db.execute_query(query,vehiculo_id)
+                self.db.execute_query(query, vehiculo_id)
                 QMessageBox.information(self.vehiculo, "Éxito", "Vehiculo eliminado con éxito.")
                 self.cargar_datos_vehiculos()
             else:

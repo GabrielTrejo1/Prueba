@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem
+from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from PyQt5.QtCore import QDate
 from models.conexion import Conexion
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>756</width>
-    <height>625</height>
+    <width>772</width>
+    <height>791</height>
    </rect>
   </property>
   <property name="font">
@@ -18,15 +18,72 @@
   <property name="windowTitle">
    <string>Gestión de Vehículos</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+background-color:#f4eee2
+}
+    QPushButton {
+        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+        border: 2px solid #b0a99f; /* Color y grosor del borde */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+        text-align: center; /* Centrar texto */
+        transition: background-color 0.3s; /* Transición suave para el hover */
+    }
+
+    QPushButton:hover {
+        background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+    }
+
+    QLineEdit {
+        background-color: #ffffff; /* Color de fondo del QLineEdit */
+        border: 2px solid #b0a99f; /* Borde del QLineEdit */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 8px; /* Espaciado interno */
+        font-size: 14px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+    }
+
+    QComboBox {
+             background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+        border: 2px solid #b0a99f; /* Color y grosor del borde */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+        text-align: center; /* Centrar texto */
+        transition: background-color 0.3s; /* Transición suave para
+    }</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">Qwidget{
+background-color:#f4eee2
+}</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="buscar">
       <property name="font">
        <font>
         <family>Arial</family>
-        <pointsize>12</pointsize>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">    QLabel {
+        font-size: 18px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+        background-color: #f4eee2; /* Fondo para el QLabel */
+        padding: 5px; /* Espaciado interno */
+        border: 1px solid #b0a99f; /* Borde del QLabel */
+        border-radius: 5px; /* Bordes redondeados */
+        font-weight: bold; /* Texto en negrita */
+    }</string>
       </property>
       <property name="text">
        <string>BUSCAR</string>
@@ -117,13 +174,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_add">
-      <property name="text">
-       <string>Agregar Vehículo</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QLineEdit" name="txtMarcaAdd">
       <property name="placeholderText">
        <string>Marca</string>
@@ -174,6 +224,9 @@
     </item>
     <item>
      <widget class="QComboBox" name="cmbCombustible">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="currentText">
        <string>Nafta</string>
       </property>
@@ -222,7 +275,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>756</width>
+     <width>772</width>
      <height>21</height>
     </rect>
    </property>

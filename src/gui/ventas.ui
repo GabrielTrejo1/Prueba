@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>720</height>
+    <height>727</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,10 @@ color: black</string>
      <attribute name="title">
       <string>Clientes</string>
      </attribute>
-     <widget class="QPushButton" name="btnBuscar">
+     <widget class="QPushButton" name="btnBuscarCliente">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -91,7 +94,7 @@ border-radius: 25px;</string>
        <string>🔍</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txtBuscar">
+     <widget class="QLineEdit" name="txtBuscarCliente">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -150,6 +153,9 @@ color: black</string>
       <property name="sortingEnabled">
        <bool>true</bool>
       </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
       <column>
        <property name="text">
         <string>ID</string>
@@ -196,7 +202,7 @@ color: black</string>
        <string>Buscar</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txtBuscar_3">
+     <widget class="QLineEdit" name="txtBuscarVehiculo">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -230,6 +236,14 @@ color: black</string>
       <property name="sortingEnabled">
        <bool>true</bool>
       </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
       <column>
        <property name="text">
         <string>Marca</string>
@@ -252,6 +266,9 @@ color: black</string>
       </column>
      </widget>
      <widget class="QPushButton" name="btnBuscar_3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -711,6 +728,9 @@ border-radius: 25px;</string>
     <property name="sortingEnabled">
      <bool>true</bool>
     </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
     <column>
      <property name="text">
       <string>ID</string>
@@ -738,6 +758,9 @@ border-radius: 25px;</string>
     </column>
    </widget>
    <widget class="QPushButton" name="btnBuscar_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>1170</x>
@@ -767,7 +790,7 @@ border-radius: 25px;</string>
      <string>🔍</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtBuscar_2">
+   <widget class="QLineEdit" name="txtBuscarVenta">
     <property name="geometry">
      <rect>
       <x>810</x>

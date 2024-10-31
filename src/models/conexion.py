@@ -1,24 +1,24 @@
 import pyodbc
 
 class Conexion:
-    def __init__(self, db_path):
-        self.db_path = db_path
+    def __init__(self):
+        self.data_base = 'DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;'
         self.con = None
     
     def conectar(self):
         if not self.con:
-            self.con = pyodbc.connect(self.db_path)
+            self.con = pyodbc.connect(self.data_base)
     
     def close(self):
         if self.con:
             self.con.close()
             self.con = None
 
-    def execute_query_fetchall(self, query, params=()):
+    def execute_query_fetchall(self, query, values=()):
         try:
             self.conectar()
             cursor = self.con.cursor()
-            cursor.execute(query, params)
+            cursor.execute(query, values)
             return cursor.fetchall()
         except Exception as e:
             print(f"Error ejecutando la consulta: {e}")
@@ -26,11 +26,11 @@ class Conexion:
         finally:
             cursor.close()
 
-    def execute_query(self, query, params=()):
+    def execute_query(self, query, values=()):
         try:
             self.conectar()
             cursor = self.con.cursor()
-            cursor.execute(query, params)
+            cursor.execute(query, values)
             self.con.commit()
         except Exception as e:
             print(f"Error ejecutando la consulta: {e}")

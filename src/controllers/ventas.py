@@ -7,7 +7,7 @@ class Ventas():
     def __init__(self):
         self.venta = uic.loadUi("src/gui/ventas.ui")
         self.venta.show()
-        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
+        self.db = Conexion()
         
     def initGui(self):
         pass

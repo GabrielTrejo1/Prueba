@@ -7,7 +7,7 @@ class Clientes():
     def __init__(self):
         self.cliente = uic.loadUi("src/gui/cliente.ui")
         self.cliente.show()
-        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
+        self.db = Conexion()
         self.insert_update = False  #False = Insert , True = Update
         self.id_cliente = "" #Esta variable va a almacenar el ID del cliente que queremos modificar
         self.initGui()

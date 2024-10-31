@@ -5,9 +5,9 @@ from models.conexion import Conexion
 
 class Ventas():
     def __init__(self):
-        self.venta = uic.loadUi("src/gui/ventas.ui")
+        self.venta = uic.loadUi("C:/Users/equipo/PycharmProjects/Trabajo-UTN/src/gui/ventas.ui")
         self.venta.show()
-        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
+        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-PM1QNE7\SQLEXPRESS;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
         
     def initGui(self):
         pass

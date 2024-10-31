@@ -1,13 +1,13 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMessageBox,QTableWidgetItem
+from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from PyQt5.QtCore import QDate
 from models.conexion import Conexion
 
 class Clientes():
     def __init__(self):
-        self.cliente = uic.loadUi("src/gui/cliente.ui")
+        self.cliente = uic.loadUi("C:/Users/equipo/PycharmProjects/Trabajo-UTN/src/gui/cliente.ui")
         self.cliente.show()
-        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
+        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-PM1QNE7\SQLEXPRESS;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
         self.insert_update = False  #False = Insert , True = Update
         self.id_cliente = "" #Esta variable va a almacenar el ID del cliente que queremos modificar
         self.initGui()
@@ -46,14 +46,14 @@ class Clientes():
             correo = self.cliente.txtCorreo.text()
             telefono = self.cliente.txtTelefono.text()
             direccion = self.cliente.txtDireccion.text()
-            fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
+            fecharegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             valid = self.valid()
-            if valid == True:
+            if valid:
                 query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
-                values = (nombre,correo,telefono,direccion,fechaRegistro)
+                values = (nombre, correo, telefono, direccion, fecharegistro)
                 
                 self.db.execute_query(query, values)
-                QMessageBox.information(self.cliente,"Cliente Agregado","Cliente agregado con éxito.")
+                QMessageBox.information(self.cliente, "Cliente Agregado", "Cliente agregado con éxito.")
                 self.cargar_datos_cliente()
     
     def eliminar_cliente(self): #Para eliminar un cliente se debe seleccionar una fila y luego pulsar el boton Eliminar.
@@ -67,14 +67,14 @@ class Clientes():
         if confirm == QMessageBox.Yes:
                 # Eliminar la fila seleccionada
             try:
-                id_cliente=self.cliente.tblClientes.item(selected_row,0)
+                id_cliente=self.cliente.tblClientes.item(selected_row, 0)
                 query = "DELETE FROM Clientes WHERE ID = ?"
                 values = int(id_cliente.text())
-                self.db.execute_query(query,values)
+                self.db.execute_query(query, values)
                 self.cliente.tblClientes.removeRow(selected_row)
                 QMessageBox.information(self.cliente, "Éxito", "Cliente eliminado exitosamente.")
             except Exception as e:
-                print("Error al eliminar el cliente: ",e)
+                print("Error al eliminar el cliente: ", e)
                 QMessageBox.information(self.cliente, "Error", "No se pudo eliminar el cliente.")
     
     def llenar_txtBox(self): 
@@ -87,19 +87,19 @@ class Clientes():
         if confirm == QMessageBox.Yes:
             self.insert_update = True #Cambio el estado para que al apretar el boton Guadar, se genere un Update
             self.cliente.btnModificar.setEnabled(False)
-            self.id_cliente = self.cliente.tblClientes.item(selected_row,0).text() #Guardo el ID del Cliente que quiero Modificar
-            self.cliente.txtNombre.setText(self.cliente.tblClientes.item(selected_row,1).text())
-            self.cliente.txtCorreo.setText(self.cliente.tblClientes.item(selected_row,2).text())
-            self.cliente.txtTelefono.setText(self.cliente.tblClientes.item(selected_row,3).text())
-            self.cliente.txtDireccion.setText(self.cliente.tblClientes.item(selected_row,4).text())
-            fecha_registro = self.cliente.tblClientes.item(selected_row,5).text().split('-')
-            self.cliente.dtpFechaRegistro.setDate(QDate(int(fecha_registro[0]),int(fecha_registro[1]),int(fecha_registro[2])))
+            self.id_cliente = self.cliente.tblClientes.item(selected_row, 0).text() #Guardo el ID del Cliente que quiero Modificar
+            self.cliente.txtNombre.setText(self.cliente.tblClientes.item(selected_row, 1).text())
+            self.cliente.txtCorreo.setText(self.cliente.tblClientes.item(selected_row, 2).text())
+            self.cliente.txtTelefono.setText(self.cliente.tblClientes.item(selected_row, 3).text())
+            self.cliente.txtDireccion.setText(self.cliente.tblClientes.item(selected_row, 4).text())
+            fecha_registro = self.cliente.tblClientes.item(selected_row, 5).text().split('-')
+            self.cliente.dtpFechaRegistro.setDate(QDate(int(fecha_registro[0]), int(fecha_registro[1]), int(fecha_registro[2])))
             self.cliente.lblModificar.setText("Modificando Cliente")
             
     def guardar_cliente(self):
-        if self.insert_update == False:
+        if not self.insert_update:
             self.nuevo_cliente()
-        elif self.insert_update == True:
+        elif self.insert_update:
             self.modificar_cliente()
             self.insert_update = False
             self.cliente.btnModificar.setEnabled(True)
@@ -110,17 +110,17 @@ class Clientes():
             correo = self.cliente.txtCorreo.text()
             telefono = self.cliente.txtTelefono.text()
             direccion = self.cliente.txtDireccion.text()
-            fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
+            fecharegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             valid = self.valid()
-            if valid == True:
+            if valid:
                 query = "UPDATE Clientes SET nombre = ?, correo = ?, telefono = ?, direccion = ?, fecha_registro = ? WHERE ID = ?"
-                values = (nombre,correo,telefono,direccion,fechaRegistro, self.id_cliente)
+                values = (nombre, correo, telefono, direccion, fecharegistro, self.id_cliente)
                 
-                self.db.execute_query(query,values)
-                QMessageBox.information(self.cliente,"Cliente Modificado","Cliente modificado con éxito.")
+                self.db.execute_query(query, values)
+                QMessageBox.information(self.cliente, "Cliente Modificado", "Cliente modificado con éxito.")
                 self.cargar_datos_cliente()
         except Exception as e:
-            QMessageBox.critical(self.cliente,"Error al modificar cliente",f"No se pudo modificar el cliente: {e}")
+            QMessageBox.critical(self.cliente, "Error al modificar cliente", f"No se pudo modificar el cliente: {e}")
             print("No se pudo modificar el cliente:", e)
         finally:
             self.id_cliente = ""
@@ -135,7 +135,7 @@ class Clientes():
             # Añadir comodines para coincidencias parciales
             query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ?"
             values = (f"{nombre}%",)
-            datos_clientes = self.db.execute_query_fetchall(query,values)
+            datos_clientes = self.db.execute_query_fetchall(query, values)
 
             # Limpiar la tabla antes de cargar nuevos datos
             self.cliente.tblClientes.setRowCount(0)

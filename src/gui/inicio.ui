@@ -6,24 +6,53 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>733</height>
+    <width>512</width>
+    <height>811</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Inicio</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255,255,255)</string>
+   <string notr="true">
+    background-color: #f4eee2; /* Color de fondo de la ventana principal */
+
+
+QPushButton {
+    background-color: #d6cfc3; /* Color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Color de fondo al pasar el mouse */
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QMainWindow {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 1,
+        stop: 0 #f4eee2, 
+        stop: 1 #d6cfc3
+    ); /* Gradiente de fondo */
+    border: 2px solid #b0a99f; /* Borde alrededor de la ventana */
+    border-radius: 10px; /* Bordes redondeados de la ventana */
+}</string>
+   </property>
    <widget class="QPushButton" name="btnClientes">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>150</x>
       <y>160</y>
       <width>191</width>
       <height>61</height>
@@ -31,7 +60,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -48,11 +77,31 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true">QPushButton {
+    background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+}
+
+</string>
     </property>
     <property name="text">
      <string>Clientes</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -64,7 +113,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>150</x>
       <y>240</y>
       <width>191</width>
       <height>61</height>
@@ -72,7 +121,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -89,8 +138,21 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true">QPushButton {
+    background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+}
+</string>
     </property>
     <property name="text">
      <string>Estado de vehículos</string>
@@ -105,7 +167,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>150</x>
       <y>320</y>
       <width>191</width>
       <height>61</height>
@@ -113,7 +175,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -130,8 +192,21 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true">QPushButton {
+    background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+}
+</string>
     </property>
     <property name="text">
      <string>Servicios</string>
@@ -146,7 +221,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>150</x>
       <y>400</y>
       <width>191</width>
       <height>61</height>
@@ -154,7 +229,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -171,8 +246,21 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true">QPushButton {
+    background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+}
+</string>
     </property>
     <property name="text">
      <string>Tipo financiamiento</string>
@@ -187,7 +275,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>150</x>
       <y>480</y>
       <width>191</width>
       <height>61</height>
@@ -195,7 +283,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -212,8 +300,21 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true">QPushButton {
+    background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+}
+</string>
     </property>
     <property name="text">
      <string>Vehículos</string>
@@ -228,7 +329,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>150</x>
       <y>560</y>
       <width>191</width>
       <height>61</height>
@@ -236,7 +337,7 @@ background-color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -253,8 +354,21 @@ background-color: rgb(255,255,255);</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255,255,255);</string>
+     <string notr="true">QPushButton {
+    background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+    border: 2px solid #b0a99f; /* Color y grosor del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+QPushButton:hover {
+    background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+}
+</string>
     </property>
     <property name="text">
      <string>Ventas</string>
@@ -266,8 +380,8 @@ background-color: rgb(255,255,255);</string>
    <widget class="QLabel" name="lblErrorInicio">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>640</y>
+      <x>150</x>
+      <y>660</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -295,8 +409,8 @@ background-color: rgb(255,255,255);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>9</y>
+      <x>30</x>
+      <y>20</y>
       <width>451</width>
       <height>131</height>
      </rect>
@@ -319,7 +433,7 @@ background-color: rgb(255,255,255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>451</width>
+     <width>512</width>
      <height>21</height>
     </rect>
    </property>

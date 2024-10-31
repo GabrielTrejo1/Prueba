@@ -5,9 +5,9 @@ from models.conexion import Conexion
 
 class Vehiculos():
     def __init__(self):
-        self.vehiculo = uic.loadUi("src/gui/vehiculos.ui")
+        self.vehiculo = uic.loadUi("C:/Users/equipo/PycharmProjects/Trabajo-UTN/src/gui/vehiculos.ui")
         self.vehiculo.show()
-        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
+        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-PM1QNE7\SQLEXPRESS;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
 
         self.initGui()
 

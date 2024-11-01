@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>img/AC Automotores.jpg</normaloff>img/AC Automotores.jpg</iconset>
+    <normaloff>img/Icono.jpg</normaloff>img/Icono.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#f4eee2</string>

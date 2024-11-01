@@ -19,9 +19,9 @@ class Ventas():
     self.cargar_clientes()
     self.cargar_vehiculos()
       
-    self.ventas.txtBuscarCliente.textChanged.connect(self.buscar_cliente)
-    self.ventas.txtBuscarVehiculo.textChanged.connect(self.buscar_vehiculo)
-    self.ventas.txtBuscarVenta.textChanged.connect(self.buscar_venta)
+    self.ventas.txtBuscarCliente.textChanged.connect(self.cargar_clientes)
+    self.ventas.txtBuscarVehiculo.textChanged.connect(self.cargar_vehiculos)
+    self.ventas.txtBuscarVenta.textChanged.connect(self.cargar_ventas)
     
     self.ventas.tblClientes.cellDoubleClicked.connect(self.seleccionar_cliente)
     self.ventas.tblVehiculos.cellDoubleClicked.connect(self.seleccionar_vehiculo)

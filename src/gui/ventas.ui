@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Ventas</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/AC Automotores.jpg</normaloff>img/AC Automotores.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#f4eee2</string>
@@ -804,6 +808,9 @@ border-radius: 25px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="placeholderText">
+     <string>Ingresa cliente o vehículo...</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_12">

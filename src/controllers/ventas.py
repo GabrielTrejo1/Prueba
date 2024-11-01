@@ -34,7 +34,6 @@ class Ventas():
       datos_ventas = self.db.execute_query_fetchall(query)
       
       self.ventas.tblVentas.setRowCount(len(datos_ventas))
-      
       fila = 0
       for item in datos_ventas:
         self.ventas.tblVentas.setItem(fila,0,QTableWidgetItem(str(item[0])))
@@ -82,7 +81,6 @@ class Ventas():
 
         # Limpiar la tabla antes de cargar nuevos datos
         self.ventas.tblClientes.setRowCount(0)
-
         self.ventas.tblClientes.setRowCount(len(datos_clientes))
         for fila, item in enumerate(datos_clientes):
             for columna, valor in enumerate(item):
@@ -99,7 +97,6 @@ class Ventas():
 
       # Limpiar la tabla antes de cargar nuevos datos
       self.ventas.tblVehiculos.setRowCount(0)
-
       self.ventas.tblVehiculos.setRowCount(len(datos_vehiculos))
       for fila, item in enumerate(datos_vehiculos):
           for columna, valor in enumerate(item):
@@ -116,7 +113,6 @@ class Ventas():
 
       # Limpiar la tabla antes de cargar nuevos datos
       self.ventas.tblVentas.setRowCount(0)
-
       self.ventas.tblVentas.setRowCount(len(datos_ventas))
       fila = 0
       for item in datos_ventas:

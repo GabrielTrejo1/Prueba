@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>727</height>
+    <height>728</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,6 +106,9 @@ border-radius: 25px;</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
+      <property name="placeholderText">
+       <string>Ingresa nombre o apellido...</string>
+      </property>
      </widget>
      <widget class="QLabel" name="label_7">
       <property name="geometry">
@@ -175,7 +178,7 @@ color: black</string>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Vehiculos</string>
+      <string>Vehículos</string>
      </attribute>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
@@ -213,6 +216,9 @@ color: black</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="placeholderText">
+       <string>Ingresa marca, modelo o patente...</string>
       </property>
      </widget>
      <widget class="QTableWidget" name="tblVehiculos">
@@ -312,33 +318,14 @@ border-radius: 25px;</string>
     <property name="title">
      <string>Cliente</string>
     </property>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>21</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Liberation Serif</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>ID</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="txtIDCliente">
      <property name="enabled">
       <bool>false</bool>
      </property>
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>40</y>
+       <x>20</x>
+       <y>20</y>
        <width>71</width>
        <height>20</height>
       </rect>
@@ -385,7 +372,7 @@ border-radius: 25px;</string>
       <string>DNI</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="txtNombreCliente">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -401,7 +388,7 @@ border-radius: 25px;</string>
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="txtDNICliente">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -439,6 +426,22 @@ border-radius: 25px;</string>
      </property>
      <property name="text">
       <string>Cancelar</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="txtIDVehiculo">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
    </widget>
@@ -530,7 +533,7 @@ border-radius: 25px;</string>
       <string>Color</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_5">
+    <widget class="QLineEdit" name="txtPatente">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -546,7 +549,7 @@ border-radius: 25px;</string>
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_6">
+    <widget class="QLineEdit" name="txtMarca">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -562,7 +565,7 @@ border-radius: 25px;</string>
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_7">
+    <widget class="QLineEdit" name="txtModelo">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -578,7 +581,7 @@ border-radius: 25px;</string>
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_8">
+    <widget class="QLineEdit" name="txtColor">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -670,7 +673,7 @@ border-radius: 25px;</string>
      <string>Precio Final</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="txtPrecio">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -683,7 +686,7 @@ border-radius: 25px;</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnGuardar">
     <property name="geometry">
      <rect>
       <x>480</x>
@@ -743,7 +746,7 @@ border-radius: 25px;</string>
     </column>
     <column>
      <property name="text">
-      <string>Vehiculo</string>
+      <string>Vehículo</string>
      </property>
     </column>
     <column>
@@ -829,48 +832,37 @@ color: black</string>
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuInicio">
-    <property name="title">
-     <string>Inicio</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuClientes">
-    <property name="title">
-     <string>Clientes</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuVehiculos">
-    <property name="title">
-     <string>Vehiculos</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuVentas">
-    <property name="title">
-     <string>Ventas</string>
-    </property>
-   </widget>
-   <addaction name="menuInicio"/>
-   <addaction name="menuClientes"/>
-   <addaction name="menuVehiculos"/>
-   <addaction name="menuVentas"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>txtBuscarCliente</tabstop>
+  <tabstop>tblClientes</tabstop>
+  <tabstop>dtpFechaRegistro</tabstop>
+  <tabstop>txtPrecio</tabstop>
+  <tabstop>btnGuardar</tabstop>
+  <tabstop>btnBuscar_3</tabstop>
+  <tabstop>btnBuscarCliente</tabstop>
+  <tabstop>txtNombreCliente</tabstop>
+  <tabstop>txtDNICliente</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>txtPatente</tabstop>
+  <tabstop>txtMarca</tabstop>
+  <tabstop>txtModelo</tabstop>
+  <tabstop>txtColor</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>txtBuscarVehiculo</tabstop>
+  <tabstop>tblVehiculos</tabstop>
+  <tabstop>txtIDCliente</tabstop>
+  <tabstop>tblVentas</tabstop>
+  <tabstop>btnBuscar_2</tabstop>
+  <tabstop>txtBuscarVenta</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_3</receiver>
+   <receiver>txtDNICliente</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -886,7 +878,7 @@ color: black</string>
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_2</receiver>
+   <receiver>txtNombreCliente</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -902,7 +894,7 @@ color: black</string>
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit</receiver>
+   <receiver>txtIDCliente</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -910,15 +902,15 @@ color: black</string>
      <y>535</y>
     </hint>
     <hint type="destinationlabel">
-     <x>108</x>
-     <y>530</y>
+     <x>98</x>
+     <y>499</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_8</receiver>
+   <receiver>txtColor</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -934,7 +926,7 @@ color: black</string>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_7</receiver>
+   <receiver>txtModelo</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -950,7 +942,7 @@ color: black</string>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_6</receiver>
+   <receiver>txtMarca</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -966,7 +958,7 @@ color: black</string>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_5</receiver>
+   <receiver>txtPatente</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -976,6 +968,22 @@ color: black</string>
     <hint type="destinationlabel">
      <x>145</x>
      <y>621</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>txtIDVehiculo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>605</x>
+     <y>599</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>63</x>
+     <y>514</y>
     </hint>
    </hints>
   </connection>

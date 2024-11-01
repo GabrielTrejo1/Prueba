@@ -11,20 +11,26 @@ class Ventas():
     self.initGui()
 
   def initGui(self):
+    self.ventas.txtIDCliente.setVisible(False)
+    self.ventas.txtIDVehiculo.setVisible(False)
+    
     self.ventas.dtpFechaRegistro.setDate(QDate.currentDate())
     self.cargar_ventas()
     self.cargar_clientes()
     self.cargar_vehiculos()
-    # self.ventas.btnGuardar.clicked.connect(self.nuevo_algo)
       
     self.ventas.txtBuscarCliente.textChanged.connect(self.buscar_cliente)
     self.ventas.txtBuscarVehiculo.textChanged.connect(self.buscar_vehiculo)
     # self.ventas.txtBuscarVenta.textChanged.connect(self.buscar_venta)
-
-  # función para llenar la tabla de Ventas
+    
+    self.ventas.tblClientes.cellDoubleClicked.connect(self.seleccionar_cliente)
+    self.ventas.tblVehiculos.cellDoubleClicked.connect(self.seleccionar_vehiculo)
+    self.ventas.btnGuardar.clicked.connect(self.guardar_venta)
+    
+  # poblar la tabla de Ventas
   def cargar_ventas(self): 
     try:
-      query = "SELECT V.ID, C.nombre, V.precio_final, V.fecha_venta FROM VENTAS AS V INNER JOIN CLIENTES AS C ON V.id_cliente = C.ID"
+      query = "SELECT Vent.ID, C.nombre, Vent.precio_final, Vent.fecha_venta, Vehi.marca, Vehi.modelo, Vehi.dominio FROM VENTAS AS Vent INNER JOIN CLIENTES AS C ON Vent.id_cliente = C.ID INNER JOIN VEHICULOS AS Vehi ON Vent.id_vehiculo = Vehi.ID"
       datos_ventas = self.db.execute_query_fetchall(query)
       
       self.ventas.tblVentas.setRowCount(len(datos_ventas))
@@ -33,7 +39,7 @@ class Ventas():
       for item in datos_ventas:
         self.ventas.tblVentas.setItem(fila,0,QTableWidgetItem(str(item[0])))
         self.ventas.tblVentas.setItem(fila,1,QTableWidgetItem(str(item[1])))
-        self.ventas.tblVentas.setItem(fila,2,QTableWidgetItem("Nada por ahora"))
+        self.ventas.tblVentas.setItem(fila,2,QTableWidgetItem(f"{str(item[4])} {str(item[5])} ({str(item[6])})")) # Marca Modelo (Patente)
         self.ventas.tblVentas.setItem(fila,3,QTableWidgetItem(str(item[2])))
         self.ventas.tblVentas.setItem(fila,4,QTableWidgetItem(str(item[3])))
         fila +=1
@@ -41,10 +47,10 @@ class Ventas():
     except Exception as e:
       print("Error al cargar las ventas: ", e)
 
-  # función para llenar la tabla de Clientes
+  # poblar la tabla de Clientes
   def cargar_clientes(self):
     try:
-      query = "SELECT id, nombre, dni FROM CLIENTES"
+      query = "SELECT id, nombre, dni FROM CLIENTES ORDER BY id DESC"
       datos_clientes = self.db.execute_query_fetchall(query)
       self.ventas.tblClientes.setRowCount(len(datos_clientes))
       for fila, item in enumerate(datos_clientes):
@@ -54,7 +60,7 @@ class Ventas():
     except Exception as e:
       print("Error al cargar los clientes: ", e)
       
-  # función para llenar la tabla de Vehículos
+  # poblar la tabla de Vehículos
   def cargar_vehiculos(self):
     try:
       query = "SELECT ID, marca, modelo, color, dominio FROM VEHICULOS"
@@ -70,7 +76,7 @@ class Ventas():
   def buscar_cliente(self):
     try:
         cliente = self.ventas.txtBuscarCliente.text().strip().lower()
-        query = "SELECT ID, nombre, dni FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ?"
+        query = "SELECT ID, nombre, dni FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? ORDER BY id DESC"
         values = (f"{cliente}%", f"% {cliente}%") # Esto es tremendo soy un capo
         datos_clientes = self.db.execute_query_fetchall(query,values)
 
@@ -87,7 +93,7 @@ class Ventas():
   def buscar_vehiculo(self):
     try:
       txt_busq = self.ventas.txtBuscarVehiculo.text().strip().lower()
-      query = "SELECT ID, marca, modelo, dominio FROM Vehiculos WHERE marca LIKE ? OR modelo LIKE ? OR dominio LIKE ?"
+      query = "SELECT ID, marca, modelo, color, dominio FROM Vehiculos WHERE marca LIKE ? OR modelo LIKE ? OR dominio LIKE ?"
       values = (f"%{txt_busq}%", f"%{txt_busq}%", f"%{txt_busq}%")
       datos_vehiculos = self.db.execute_query_fetchall(query,values)
 
@@ -118,92 +124,59 @@ class Ventas():
   #       except Exception as e:
   #           QMessageBox.critical(self.vehiculo, "Error", f"No se pudo buscar el vehiculo: {e}")
 
-  # def nuevo_cliente(self):
-  #   try:
-  #     cursor = self.db.cursor()
+  def seleccionar_cliente(self):
+    row = self.ventas.tblClientes.currentRow()
+    self.ventas.txtIDCliente.setText(self.ventas.tblClientes.item(row, 0).text())
+    self.ventas.txtNombreCliente.setText(self.ventas.tblClientes.item(row, 1).text())
+    self.ventas.txtDNICliente.setText(self.ventas.tblClientes.item(row, 2).text())
+
+  def seleccionar_vehiculo(self):
+    row = self.ventas.tblVehiculos.currentRow()
+    self.ventas.txtPatente.setText(self.ventas.tblVehiculos.item(row, 4).text())
+    self.ventas.txtMarca.setText(self.ventas.tblVehiculos.item(row, 1).text())
+    self.ventas.txtModelo.setText(self.ventas.tblVehiculos.item(row, 2).text())
+    self.ventas.txtColor.setText(self.ventas.tblVehiculos.item(row, 3).text())
+    self.ventas.txtIDVehiculo.setText(self.ventas.tblVehiculos.item(row, 0).text())
+    
+  def guardar_venta(self):
+    valid = self.valid()
+    if valid:
+      query = "INSERT INTO Ventas (id_cliente, id_vehiculo, fecha_venta, precio_final, metodo_pago, id_tipo_financiamiento) VALUES(?,?,?,?,'tarjeta',NULL)"
+      values = (self.ventas.txtIDCliente.text(),
+                self.ventas.txtIDVehiculo.text(),
+                self.ventas.dtpFechaRegistro.date().toString("yyyy-MM-dd"),
+                self.ventas.txtPrecio.text(),
+                # metodo_pago,
+                # id_tipo_financiamiento
+                )
       
-  #     nombre = self.cliente.txtNombre.text()
-  #     correo = self.cliente.txtCorreo.text()
-  #     telefono = self.cliente.txtTelefono.text()
-  #     direccion = self.cliente.txtDireccion.text()
-  #     fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
-  #     valid = self.valid()
-  #     if valid == True:
-  #       query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
-  #       values = (nombre,correo,telefono,direccion,fechaRegistro)
-        
-  #       cursor.execute(query,values)
-  #       cursor.commit()
-  #       QMessageBox.information(self.cliente,"Cliente Agregado","Cliente agregado con éxito.")
-  #       self.limpiar_tabla() # self.ventas.tblVentas.setRowCount(0)
-  #       self.cargar_ventas()
-  #   except Exception as e:
-  #     QMessageBox.critical(self.cliente,"Error al agregar cliente",f"No se pudo agregar el cliente: {e}")
-  #     print("No se pudo insertar el cliente:", e)
-  #   finally:
-  #       cursor.close()
-          
-  # def eliminar_cliente(self): #Para eliminar un cliente se debe seleccionar una fila y luego pulsar el boton Eliminar.
-  #   selected_row = self.cliente.tblVentas.currentRow()
-
-  #   if selected_row < 0:  # Verificar si no hay fila seleccionada
-  #     QMessageBox.warning(self.cliente, "Advertencia", "Por favor, seleccione un cliente para eliminar.")
-  #     return
-
-  #   # Confirmar eliminación
-  #   confirm = QMessageBox.question(self.cliente, "Confirmar Eliminación", "¿Está seguro de que desea eliminar este cliente?", QMessageBox.Yes | QMessageBox.No)
-
-  #   if confirm == QMessageBox.Yes:
-  #     try:
-  #       # Eliminar la fila seleccionada
-  #       #print(selected_row)
-  #       id_cliente=self.cliente.tblVentas.item(selected_row,0)
-  #       cursor = self.db.cursor()
-  #       query = "DELETE FROM Clientes WHERE ID = ?"
-  #       values = int(id_cliente.text())
-  #       cursor.execute(query,values)
-  #       cursor.commit()
-  #       self.cliente.tblVentas.removeRow(selected_row)
-  #       QMessageBox.information(self.cliente, "Éxito", "Cliente eliminado exitosamente.")
-  #     except Exception as e:
-  #       print("Error al eliminar el cliente: ",e)
-  #       QMessageBox.information(self.cliente, "Error", "No se pudo eliminar el cliente.")
-  #     finally:
-  #       cursor.close()
-  
-  # def buscar_cliente(self):
-  #   try:
-  #     nombre = self.cliente.txtBuscar.text().strip().lower()
-  #     # Añadir comodines para coincidencias parciales
-  #     query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ?"
-  #     values = (f"%{nombre}%",)
-  #     cursor = self.db.cursor()
-  #     res = cursor.execute(query, values)
-  #     datos_clientes = res.fetchall()
-
-  #     # Limpiar la tabla antes de cargar nuevos datos
-  #     self.cliente.tblVentas.setRowCount(0)
-
-  #     # Llenar la tabla con los nuevos resultados
-  #     self.cliente.tblVentas.setRowCount(len(datos_clientes))
-  #     for fila, item in enumerate(datos_clientes):
-  #       for columna, valor in enumerate(item):
-  #         self.cliente.tblVentas.setItem(fila, columna, QTableWidgetItem(str(valor)))
-  #   except Exception as e:
-  #     QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
-          
-  # def valid(self): #Valida que almenos un campo contenga texto.
-  #   nombre = self.cliente.txtNombre.text()
-  #   correo = self.cliente.txtCorreo.text()
-  #   telefono = self.cliente.txtTelefono.text()
-  #   direccion = self.cliente.txtDireccion.text()
-  #   if (nombre+correo+telefono+direccion) == "":
-  #     QMessageBox.warning(self.cliente, "Error", "Llene almenos un campo para agregar el cliente")
-  #     return False
-  #   return True
+      self.db.execute_query(query, values)
+      QMessageBox.information(self.ventas,"Venta Agregada","Venta agregada con éxito.")
+      self.cargar_ventas()
+      self.ventas.txtIDCliente.clear()
+      self.ventas.txtNombreCliente.clear()
+      self.ventas.txtDNICliente.clear()
+      self.ventas.txtIDVehiculo.clear()
+      self.ventas.txtPatente.clear()
+      self.ventas.txtMarca.clear()
+      self.ventas.txtModelo.clear()
+      self.ventas.txtColor.clear()
+      self.ventas.txtPrecio.clear()
       
-  # def actualizar_cliente(self):
-  #   pass
-  
-  # def filtrar_fecha(self):
-  #   pass
+  def valid(self): #Valida que almenos un campo contenga texto.
+    id_cliente = self.ventas.txtIDCliente.text()
+    id_vehiculo = self.ventas.txtIDVehiculo.text()
+    precio = self.ventas.txtPrecio.text()
+    if id_cliente == "":
+      QMessageBox.warning(self.ventas, "Error", "Por favor, selecciona un cliente.")
+      return False
+    if id_vehiculo == "":
+      QMessageBox.warning(self.ventas, "Error", "Por favor, selecciona un vehículo.")
+      return False
+    if precio == "":
+      QMessageBox.warning(self.ventas, "Error", "Por favor, ingresa el precio.")
+      return False
+    if int(precio) <= 0:
+      QMessageBox.warning(self.ventas, "Error", "El precio debe ser mayor a cero.")
+      return False
+    return True

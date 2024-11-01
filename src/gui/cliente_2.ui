@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>695</height>
+    <height>791</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,109 +34,6 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="txtBuscar">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    QLineEdit {
-        background-color: #ffffff;
-        border: 2px solid #b0a99f;
-        border-radius: 10px;
-        padding: 8px;
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="btnBuscar">
-         <property name="font">
-          <font>
-           <pointsize>30</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-border-radius: 25px;</string>
-         </property>
-         <property name="text">
-          <string>🔍</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>20</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
-         </property>
-         <property name="text">
-          <string>Buscar</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_9">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>15</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Hasta</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QDateEdit" name="dtpFechaDesde">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_8">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>15</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Desde</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="3" colspan="2">
         <widget class="QCheckBox" name="checkBox">
          <property name="font">
@@ -157,6 +54,12 @@ color: black</string>
            <width>791</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <kerning>true</kerning>
+          </font>
          </property>
          <property name="cursor" stdset="0">
           <cursorShape>ArrowCursor</cursorShape>
@@ -187,9 +90,33 @@ border-bottom-right-radius: 10px;</string>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectRows</enum>
          </property>
+         <property name="showGrid">
+          <bool>true</bool>
+         </property>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="cornerButtonEnabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderHighlightSections">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderHighlightSections">
+          <bool>true</bool>
+         </attribute>
          <column>
           <property name="text">
            <string>ID</string>
@@ -244,6 +171,109 @@ border-bottom-right-radius: 10px;</string>
          </property>
         </widget>
        </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="btnBuscar">
+         <property name="font">
+          <font>
+           <pointsize>30</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+border-radius: 25px;</string>
+         </property>
+         <property name="text">
+          <string>🔍</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+color: black</string>
+         </property>
+         <property name="text">
+          <string>Buscar</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="txtBuscar">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_9">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Hasta</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_8">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Desde</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QDateEdit" name="dtpFechaDesde">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+        background-color: #ffffff; /* Color de fondo del QLineEdit */
+        border: 2px solid #b0a99f; /* Borde del QLineEdit */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 8px; /* Espaciado interno */
+        font-size: 14px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+    }</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -256,6 +286,25 @@ border-bottom-right-radius: 10px;</string>
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
+       <item row="9" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+color: black</string>
+         </property>
+         <property name="text">
+          <string>Teléfono</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0" colspan="4" alignment="Qt::AlignRight">
         <widget class="QLabel" name="label">
          <property name="font">
@@ -278,22 +327,37 @@ color: black</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_4">
+       <item row="3" column="2" colspan="2">
+        <widget class="QLineEdit" name="txtNombre">
          <property name="font">
           <font>
-           <family>Liberation Serif</family>
-           <pointsize>20</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
          </property>
-         <property name="text">
-          <string>Teléfono</string>
+        </widget>
+       </item>
+       <item row="9" column="2" colspan="2">
+        <widget class="QLineEdit" name="txtTelefono">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
          </property>
         </widget>
        </item>
@@ -313,126 +377,7 @@ color: black</string>
          </property>
         </spacer>
        </item>
-       <item row="5" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>20</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
-         </property>
-         <property name="text">
-          <string>Correo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2" colspan="2">
-        <widget class="QLineEdit" name="txtNombre">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    QLineEdit {
-        background-color: #ffffff;
-        border: 2px solid #b0a99f;
-        border-radius: 10px;
-        padding: 8px;
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2" colspan="2">
-        <widget class="QLineEdit" name="txtTelefono">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    QLineEdit {
-        background-color: #ffffff;
-        border: 2px solid #b0a99f;
-        border-radius: 10px;
-        padding: 8px;
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="13" column="3">
-        <widget class="QPushButton" name="btnEliminar">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    QPushButton {
-        background-color: #d6cfc3;
-        border: 2px solid #b0a99f;
-        border-radius: 10px;
-        padding: 10px;
-    }
-
-    QPushButton:hover {
-        background-color: #c1b1a4;
-    }
-</string>
-         </property>
-         <property name="text">
-          <string>Eliminar</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_6">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>20</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
-         </property>
-         <property name="text">
-          <string>Fecha Registro</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="2">
+       <item row="16" column="2">
         <widget class="QPushButton" name="btnModificar">
          <property name="enabled">
           <bool>true</bool>
@@ -463,7 +408,73 @@ color: black</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="2">
+       <item row="16" column="3">
+        <widget class="QPushButton" name="btnEliminar">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QPushButton {
+        background-color: #d6cfc3;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    QPushButton:hover {
+        background-color: #c1b1a4;
+    }
+</string>
+         </property>
+         <property name="text">
+          <string>Eliminar</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_6">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+color: black</string>
+         </property>
+         <property name="text">
+          <string>Fecha Registro</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="10" column="2">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -479,7 +490,69 @@ color: black</string>
          </property>
         </spacer>
        </item>
-       <item row="9" column="0" alignment="Qt::AlignRight">
+       <item row="8" column="2">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="11" column="2" colspan="2">
+        <widget class="QLineEdit" name="txtDireccion">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="2">
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="12" column="2">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="11" column="0" alignment="Qt::AlignRight">
         <widget class="QLabel" name="label_5">
          <property name="font">
           <font>
@@ -498,85 +571,28 @@ color: black</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="15" column="2">
-        <spacer name="verticalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="9" column="2" colspan="2">
-        <widget class="QLineEdit" name="txtDireccion">
+       <item row="13" column="2" colspan="2">
+        <widget class="QDateEdit" name="dtpFechaRegistro">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">    QLineEdit {
+          <string notr="true">QDateEdit {
         background-color: #ffffff;
         border: 2px solid #b0a99f;
-        border-radius: 10px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 0px;
         padding: 8px;
-    }</string>
+    }
+</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="2">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="14" column="0" colspan="4" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="lblModificar">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(255, 170, 0)</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="2">
+       <item row="15" column="2">
         <widget class="QPushButton" name="btnGuardar">
          <property name="font">
           <font>
@@ -604,45 +620,23 @@ color: black</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="2" colspan="2">
-        <widget class="QDateEdit" name="dtpFechaRegistro">
+       <item row="17" column="0" colspan="4" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="lblModificar">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QDateEdit {
-        background-color: #ffffff;
-        border: 2px solid #b0a99f;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 0px;
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 0px;
-        padding: 8px;
-    }
-</string>
+          <string notr="true">color: rgb(255, 170, 0)</string>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
-       <item row="5" column="2" colspan="2">
-        <widget class="QLineEdit" name="txtCorreo">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    QLineEdit {
-        background-color: #ffffff;
-        border: 2px solid #b0a99f;
-        border-radius: 10px;
-        padding: 8px;
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="3">
+       <item row="15" column="3">
         <widget class="QPushButton" name="btnCancelar">
          <property name="font">
           <font>
@@ -681,8 +675,7 @@ color: black</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Nombre</string>
@@ -737,6 +730,107 @@ color: black</string>
          </property>
         </spacer>
        </item>
+       <item row="5" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_10">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>DNI</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <spacer name="verticalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="7" column="0" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+color: black</string>
+         </property>
+         <property name="text">
+          <string>Correo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2" colspan="2">
+        <widget class="QLineEdit" name="txtCorreo">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
+        <widget class="QLineEdit" name="txtDNI">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="2">
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
     </item>
@@ -748,7 +842,7 @@ color: black</string>
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuClientes">
@@ -789,6 +883,24 @@ color: black</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>txtNombre</tabstop>
+  <tabstop>txtDNI</tabstop>
+  <tabstop>txtCorreo</tabstop>
+  <tabstop>txtTelefono</tabstop>
+  <tabstop>txtDireccion</tabstop>
+  <tabstop>dtpFechaRegistro</tabstop>
+  <tabstop>btnGuardar</tabstop>
+  <tabstop>btnCancelar</tabstop>
+  <tabstop>btnModificar</tabstop>
+  <tabstop>btnEliminar</tabstop>
+  <tabstop>txtBuscar</tabstop>
+  <tabstop>btnBuscar</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>dtpFechaDesde</tabstop>
+  <tabstop>dtpFechaHasta</tabstop>
+  <tabstop>tblClientes</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -798,12 +910,12 @@ color: black</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>465</y>
+     <x>398</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>365</x>
-     <y>336</y>
+     <x>398</x>
+     <y>510</y>
     </hint>
    </hints>
   </connection>
@@ -814,12 +926,12 @@ color: black</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>317</x>
-     <y>465</y>
+     <x>398</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>359</x>
-     <y>259</y>
+     <x>398</x>
+     <y>437</y>
     </hint>
    </hints>
   </connection>
@@ -830,12 +942,12 @@ color: black</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>309</x>
-     <y>465</y>
+     <x>398</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>335</x>
-     <y>211</y>
+     <x>398</x>
+     <y>364</y>
     </hint>
    </hints>
   </connection>
@@ -846,12 +958,12 @@ color: black</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>365</x>
-     <y>465</y>
+     <x>398</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>365</x>
-     <y>150</y>
+     <x>398</x>
+     <y>218</y>
     </hint>
    </hints>
   </connection>
@@ -862,12 +974,12 @@ color: black</string>
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>365</x>
-     <y>465</y>
+     <x>398</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>318</x>
-     <y>150</y>
+     <x>398</x>
+     <y>218</y>
     </hint>
    </hints>
   </connection>
@@ -882,8 +994,8 @@ color: black</string>
      <y>60</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1171</x>
-     <y>79</y>
+     <x>1260</x>
+     <y>106</y>
     </hint>
    </hints>
   </connection>
@@ -898,8 +1010,8 @@ color: black</string>
      <y>58</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1143</x>
-     <y>111</y>
+     <x>1260</x>
+     <y>150</y>
     </hint>
    </hints>
   </connection>
@@ -910,12 +1022,12 @@ color: black</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>251</x>
-     <y>465</y>
+     <x>292</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>258</x>
-     <y>526</y>
+     <x>398</x>
+     <y>744</y>
     </hint>
    </hints>
   </connection>
@@ -926,12 +1038,28 @@ color: black</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>365</x>
-     <y>465</y>
+     <x>398</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>338</x>
-     <y>516</y>
+     <x>398</x>
+     <y>744</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>txtDNI</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>352</x>
+     <y>633</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>270</y>
     </hint>
    </hints>
   </connection>

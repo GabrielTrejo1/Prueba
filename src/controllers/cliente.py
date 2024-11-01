@@ -25,7 +25,7 @@ class Clientes():
 
     def cargar_datos_cliente(self): #Func. para llenar la tabla de Clientes.
         try:
-            query = "SELECT * FROM Clientes"
+            query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE estado = 1 ORDER BY ID DESC"
             datos_clientes = self.db.execute_query_fetchall(query)
             
             if not datos_clientes:  # Verificar si no hay datos
@@ -43,14 +43,15 @@ class Clientes():
     
     def nuevo_cliente(self):
             nombre = self.cliente.txtNombre.text()
+            dni = self.cliente.txtDNI.text()
             correo = self.cliente.txtCorreo.text()
             telefono = self.cliente.txtTelefono.text()
             direccion = self.cliente.txtDireccion.text()
             fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             valid = self.valid()
             if valid == True:
-                query = "INSERT INTO Clientes (nombre, correo, telefono, direccion, fecha_registro) VALUES(?,?,?,?,?)"
-                values = (nombre,correo,telefono,direccion,fechaRegistro)
+                query = "INSERT INTO Clientes (nombre, DNI, correo, telefono, direccion, fecha_registro, estado) VALUES(?,?,?,?,?,?,1)"
+                values = (nombre,dni,correo,telefono,direccion,fechaRegistro)
                 
                 self.db.execute_query(query, values)
                 QMessageBox.information(self.cliente,"Cliente Agregado","Cliente agregado con éxito.")
@@ -89,10 +90,11 @@ class Clientes():
             self.cliente.btnModificar.setEnabled(False)
             self.id_cliente = self.cliente.tblClientes.item(selected_row,0).text() #Guardo el ID del Cliente que quiero Modificar
             self.cliente.txtNombre.setText(self.cliente.tblClientes.item(selected_row,1).text())
-            self.cliente.txtCorreo.setText(self.cliente.tblClientes.item(selected_row,2).text())
-            self.cliente.txtTelefono.setText(self.cliente.tblClientes.item(selected_row,3).text())
-            self.cliente.txtDireccion.setText(self.cliente.tblClientes.item(selected_row,4).text())
-            fecha_registro = self.cliente.tblClientes.item(selected_row,5).text().split('-')
+            self.cliente.txtDNI.setText(self.cliente.tblClientes.item(selected_row,2).text())
+            self.cliente.txtCorreo.setText(self.cliente.tblClientes.item(selected_row,3).text())
+            self.cliente.txtTelefono.setText(self.cliente.tblClientes.item(selected_row,4).text())
+            self.cliente.txtDireccion.setText(self.cliente.tblClientes.item(selected_row,5).text())
+            fecha_registro = self.cliente.tblClientes.item(selected_row,6).text().split('-')
             self.cliente.dtpFechaRegistro.setDate(QDate(int(fecha_registro[0]),int(fecha_registro[1]),int(fecha_registro[2])))
             self.cliente.lblModificar.setText("Modificando Cliente")
             
@@ -107,14 +109,15 @@ class Clientes():
     def modificar_cliente(self):
         try:
             nombre = self.cliente.txtNombre.text()
+            dni = self.cliente.txtDNI.text()
             correo = self.cliente.txtCorreo.text()
             telefono = self.cliente.txtTelefono.text()
             direccion = self.cliente.txtDireccion.text()
             fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             valid = self.valid()
             if valid == True:
-                query = "UPDATE Clientes SET nombre = ?, correo = ?, telefono = ?, direccion = ?, fecha_registro = ? WHERE ID = ?"
-                values = (nombre,correo,telefono,direccion,fechaRegistro, self.id_cliente)
+                query = "UPDATE Clientes SET nombre = ?,DNI = ?, correo = ?, telefono = ?, direccion = ?, fecha_registro = ? WHERE ID = ?"
+                values = (nombre,dni,correo,telefono,direccion,fechaRegistro, self.id_cliente)
                 
                 self.db.execute_query(query,values)
                 QMessageBox.information(self.cliente,"Cliente Modificado","Cliente modificado con éxito.")
@@ -131,10 +134,10 @@ class Clientes():
 
     def buscar_cliente(self):
         try:
-            nombre = self.cliente.txtBuscar.text().strip().lower()
+            nombre = self.cliente.txtBuscar.text().lower()
             # Añadir comodines para coincidencias parciales
-            query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ?"
-            values = (f"{nombre}%",)
+            query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ?"
+            values = (f"{nombre}%",f"% {nombre}%")
             datos_clientes = self.db.execute_query_fetchall(query,values)
 
             # Limpiar la tabla antes de cargar nuevos datos
@@ -150,10 +153,11 @@ class Clientes():
             
     def valid(self): #Valida que almenos un campo contenga texto.
         nombre = self.cliente.txtNombre.text()
+        dni = self.cliente.txtDNI.text()
         correo = self.cliente.txtCorreo.text()
         telefono = self.cliente.txtTelefono.text()
         direccion = self.cliente.txtDireccion.text()
-        if (nombre+correo+telefono+direccion) == "":
+        if (nombre+correo+telefono+direccion+dni) == "":
             QMessageBox.warning(self.cliente, "Error", "Llene almenos un campo para agregar el cliente")
             return False
         return True

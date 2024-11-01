@@ -990,39 +990,7 @@ color: black</string>
     </hint>
     <hint type="destinationlabel">
      <x>1260</x>
-     <y>150</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnGuardar</sender>
-   <signal>clicked()</signal>
-   <receiver>lblModificar</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>292</x>
-     <y>658</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>398</x>
-     <y>744</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnCancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>lblModificar</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>398</x>
-     <y>658</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>398</x>
-     <y>744</y>
+     <y>148</y>
     </hint>
    </hints>
   </connection>

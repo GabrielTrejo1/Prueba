@@ -149,6 +149,7 @@ class Clientes():
         self.insert_update = False
         self.cliente.btnModificar.setEnabled(True)
         self.cliente.dtpFechaRegistro.setEnabled(True)
+        self.cliente.lblModificar.setVisible(False)
 
     def buscar_cliente(self):
         try:

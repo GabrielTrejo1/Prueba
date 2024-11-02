@@ -18,11 +18,10 @@ class Vehiculos():
         self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
         self.vehiculo.btnAgregar.clicked.connect(self.nuevo_vehiculo)
         self.vehiculo.btnEliminar.clicked.connect(self.eliminar_vehiculo)
-        self.vehiculo.btnBuscar.clicked.connect(self.buscar_vehiculo)
+
 
         # Conectar la señal textChanged del campo de texto
         self.vehiculo.txtMarca.textChanged.connect(self.buscar_vehiculo)
-        self.vehiculo.txtModelo.textChanged.connect(self.buscar_vehiculo)
         for fila, item in enumerate(datos_vehiculos):
             for columna, valor in enumerate(item):
                 self.vehiculo.tblVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
@@ -59,9 +58,9 @@ class Vehiculos():
     def buscar_vehiculo(self):
         try:
             marca = self.vehiculo.txtMarca.text().strip().lower()
-            modelo = self.vehiculo.txtModelo.text().strip().lower()
-            query = "SELECT * FROM Vehiculos WHERE Marca LIKE ? AND Modelo LIKE ?"
-            values = (f"{marca}%", f"{modelo}%")
+
+            query = "SELECT * FROM Vehiculos WHERE LOWER(Marca) LIKE ? OR LOWER(Modelo) LIKE ?"
+            values = (f"{marca}%", f"{marca}%")
             datos_vehiculos = self.db.execute_query_fetchall(query, values)
 
               # Limpiar la tabla antes de cargar nuevos datos

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VehicleWindow</class>
+ <widget class="QMainWindow" name="VehicleWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>772</width>
+    <height>791</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Gestión de Vehículos</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+background-color:#f4eee2
+}
+    QPushButton {
+        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+        border: 2px solid #b0a99f; /* Color y grosor del borde */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+        text-align: center; /* Centrar texto */
+        transition: background-color 0.3s; /* Transición suave para el hover */
+    }
+
+    QPushButton:hover {
+        background-color: #c1b1a4; /* Nuevo color de fondo al pasar el mouse */
+    }
+
+    QLineEdit {
+        background-color: #ffffff; /* Color de fondo del QLineEdit */
+        border: 2px solid #b0a99f; /* Borde del QLineEdit */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 8px; /* Espaciado interno */
+        font-size: 14px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+    }
+
+    QComboBox {
+             background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+        border: 2px solid #b0a99f; /* Color y grosor del borde */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+        text-align: center; /* Centrar texto */
+        transition: background-color 0.3s; /* Transición suave para
+    }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">Qwidget{
+background-color:#f4eee2
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="buscar">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">    QLabel {
+        font-size: 18px; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+        background-color: #f4eee2; /* Fondo para el QLabel */
+        padding: 5px; /* Espaciado interno */
+        border: 1px solid #b0a99f; /* Borde del QLabel */
+        border-radius: 5px; /* Bordes redondeados */
+        font-weight: bold; /* Texto en negrita */
+    }</string>
+      </property>
+      <property name="text">
+       <string>BUSCAR</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtMarca">
+      <property name="placeholderText">
+       <string>Marca</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtModelo">
+      <property name="placeholderText">
+       <string>Modelo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnBuscar">
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tblVehiculos">
+      <property name="columnCount">
+       <number>9</number>
+      </property>
+      <property name="horizontalHeaderLabels" stdset="0">
+       <stringlist>
+        <string>Patente</string>
+        <string>Marca</string>
+        <string>Modelo</string>
+        <string>Color</string>
+        <string>Carrocería</string>
+        <string>Combustible</string>
+       </stringlist>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dominio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Marca</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Modelo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Motor</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Color</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Carroceria</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Tipo Combustible</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dealles</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtMarcaAdd">
+      <property name="placeholderText">
+       <string>Marca</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtModeloAdd">
+      <property name="placeholderText">
+       <string>Modelo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtColor">
+      <property name="placeholderText">
+       <string>Color</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtCarroceria">
+      <property name="placeholderText">
+       <string>Carrocería</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtMotor">
+      <property name="placeholderText">
+       <string>Motor</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtDetalles">
+      <property name="placeholderText">
+       <string>Detalles</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtPatente">
+      <property name="placeholderText">
+       <string>Patente</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="cmbCombustible">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="currentText">
+       <string>Nafta</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Nafta</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Gasoil</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Eléctrico</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnAgregar">
+      <property name="text">
+       <string>Agregar Vehículo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnEliminar">
+      <property name="text">
+       <string>Eliminar Vehículo</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblMensaje">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>772</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuinicio">
+    <property name="title">
+     <string>inicio</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuclientes">
+    <property name="title">
+     <string>clientes</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuventas">
+    <property name="title">
+     <string>ventas</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuvehiculos">
+    <property name="title">
+     <string>vehiculos</string>
+    </property>
+   </widget>
+   <addaction name="menuinicio"/>
+   <addaction name="menuclientes"/>
+   <addaction name="menuventas"/>
+   <addaction name="menuvehiculos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

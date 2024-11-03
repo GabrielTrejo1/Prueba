@@ -18,20 +18,31 @@ class Clientes():
         self.cliente.dtpFechaRegistro.setDate(QDate.currentDate())
         self.cliente.btnGuardar.clicked.connect(self.guardar_cliente)
         self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
-        self.cliente.txtBuscar.textChanged.connect(self.buscar_cliente)
+        self.cliente.txtBuscar.textChanged.connect(self.cargar_datos_cliente)
+        self.cliente.dtpFechaDesde.dateChanged.connect(self.cargar_datos_cliente)
+        self.cliente.dtpFechaHasta.dateChanged.connect(self.cargar_datos_cliente)
+        self.cliente.checkFecha.clicked.connect(self.cargar_datos_cliente)
         self.cliente.btnModificar.clicked.connect(self.llenar_txtBox)
         self.cliente.btnCancelar.clicked.connect(self.cancelar_modificar)
         self.cliente.lblModificar.setVisible(False)
 
-    def cargar_datos_cliente(self): #Func. para llenar la tabla de Clientes.
+    def cargar_datos_cliente(self):
         try:
-            query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE estado = 1 ORDER BY ID DESC"
-            datos_clientes = self.db.execute_query_fetchall(query)
+            if self.cliente.checkFecha.isChecked():
+                desde = self.cliente.dtpFechaDesde.date().toString("yyyy-MM-dd")
+                hasta = self.cliente.dtpFechaHasta.date().toString("yyyy-MM-dd")
+                buscar = self.cliente.txtBuscar.text().lower()
+                buscar = self.cliente.txtBuscar.text().lower()
+                query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE (LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ?) AND fecha_registro BETWEEN ? AND ? ORDER BY ID DESC"
+                values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%", desde, hasta)
+                datos_clientes = self.db.execute_query_fetchall(query,values)
+            else:
+                buscar = self.cliente.txtBuscar.text().lower()
+                query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ? ORDER BY ID DESC"
+                values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%")
+                datos_clientes = self.db.execute_query_fetchall(query,values)
             
-            if not datos_clientes:  # Verificar si no hay datos
-                print("No se encontraron datos de clientes.")
-                return
-            
+            # Llenar la tabla con los nuevos resultados
             self.cliente.tblClientes.setRowCount(len(datos_clientes))
             for fila, item in enumerate(datos_clientes):
                 for columna, valor in enumerate(item):
@@ -39,8 +50,8 @@ class Clientes():
             self.cliente.tblClientes.resizeColumnsToContents() #Ajustar las columnas al tamaño del mayor elemento.
             self.cliente.tblClientes.verticalHeader().setVisible(False) #Ocultar indices de las filas.
         except Exception as e:
-            print(f"Error al cargar los clientes: {e}")
-    
+            QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
+            
     def nuevo_cliente(self):
         confirm = QMessageBox.question(self.cliente, "Agregar Nuevo Cliente", "¿Está seguro de que desea agregar este cliente?", QMessageBox.Yes | QMessageBox.No)
         if confirm == QMessageBox.Yes:
@@ -150,25 +161,8 @@ class Clientes():
         self.cliente.btnModificar.setEnabled(True)
         self.cliente.dtpFechaRegistro.setEnabled(True)
         self.cliente.lblModificar.setVisible(False)
+        self.cliente.dtpFechaRegistro.setDate(QDate.currentDate())
 
-    def buscar_cliente(self):
-        try:
-            nombre = self.cliente.txtBuscar.text().lower()
-            # Añadir comodines para coincidencias parciales
-            query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ?"
-            values = (f"{nombre}%",f"% {nombre}%")
-            datos_clientes = self.db.execute_query_fetchall(query,values)
-
-            # Limpiar la tabla antes de cargar nuevos datos
-            self.cliente.tblClientes.setRowCount(0)
-
-            # Llenar la tabla con los nuevos resultados
-            self.cliente.tblClientes.setRowCount(len(datos_clientes))
-            for fila, item in enumerate(datos_clientes):
-                for columna, valor in enumerate(item):
-                    self.cliente.tblClientes.setItem(fila, columna, QTableWidgetItem(str(valor)))
-        except Exception as e:
-            QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
             
     def valid(self): #Valida que almenos un campo contenga texto.
         nombre = self.cliente.txtNombre.text()
@@ -183,6 +177,3 @@ class Clientes():
             QMessageBox.warning(self.cliente, "Error", "El DNI solo puede contener números")
             return False
         return True
-    
-    def filtrar_fecha(self):
-        pass

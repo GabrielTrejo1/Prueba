@@ -1,13 +1,13 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from PyQt5.QtCore import QDate
-from models.conexion import Conexion
+from src.models.conexion import Conexion
 
 class Vehiculos():
     def __init__(self):
         self.vehiculo = uic.loadUi("C:/Users/equipo/PycharmProjects/Trabajo-UTN/src/gui/vehiculos.ui")
         self.vehiculo.show()
-        self.db = Conexion('DRIVER={SQL Server};SERVER=DESKTOP-PM1QNE7\SQLEXPRESS;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;')
+        self.db = Conexion()
 
         self.initGui()
 
@@ -18,7 +18,6 @@ class Vehiculos():
         self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
         self.vehiculo.btnAgregar.clicked.connect(self.nuevo_vehiculo)
         self.vehiculo.btnEliminar.clicked.connect(self.eliminar_vehiculo)
-
 
         # Conectar la señal textChanged del campo de texto
         self.vehiculo.txtMarca.textChanged.connect(self.buscar_vehiculo)
@@ -58,7 +57,6 @@ class Vehiculos():
     def buscar_vehiculo(self):
         try:
             marca = self.vehiculo.txtMarca.text().strip().lower()
-
             query = "SELECT * FROM Vehiculos WHERE LOWER(Marca) LIKE ? OR LOWER(Modelo) LIKE ?"
             values = (f"{marca}%", f"{marca}%")
             datos_vehiculos = self.db.execute_query_fetchall(query, values)

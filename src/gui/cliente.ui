@@ -34,7 +34,7 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="3" colspan="2">
+       <item row="0" column="2" colspan="2">
         <widget class="QCheckBox" name="checkBox">
          <property name="font">
           <font>
@@ -47,7 +47,107 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="5">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="txtBuscar">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">    QLineEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+        border-radius: 10px;
+        padding: 8px;
+    }</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_8">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Desde</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2" alignment="Qt::AlignRight">
+        <widget class="QLabel" name="label_9">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Hasta</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QDateEdit" name="dtpFechaDesde">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QDateEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 0px;
+        padding: 5px;
+    }
+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>20</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+color: black</string>
+         </property>
+         <property name="text">
+          <string>Buscar 🔍</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QDateEdit" name="dtpFechaHasta">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QDateEdit {
+        background-color: #ffffff;
+        border: 2px solid #b0a99f;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 0px;
+        padding: 5px;
+    }
+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="4">
         <widget class="QTableWidget" name="tblClientes">
          <property name="minimumSize">
           <size>
@@ -152,126 +252,6 @@ border-bottom-right-radius: 10px;</string>
            <string>Fecha Registro</string>
           </property>
          </column>
-        </widget>
-       </item>
-       <item row="2" column="4">
-        <widget class="QDateEdit" name="dtpFechaHasta">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="btnBuscar">
-         <property name="font">
-          <font>
-           <pointsize>30</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-border-radius: 25px;</string>
-         </property>
-         <property name="text">
-          <string>🔍</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>20</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
-         </property>
-         <property name="text">
-          <string>Buscar</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="txtBuscar">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    QLineEdit {
-        background-color: #ffffff;
-        border: 2px solid #b0a99f;
-        border-radius: 10px;
-        padding: 8px;
-    }</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_9">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>15</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Hasta</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_8">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>15</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Desde</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QDateEdit" name="dtpFechaDesde">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
-        background-color: #ffffff; /* Color de fondo del QLineEdit */
-        border: 2px solid #b0a99f; /* Borde del QLineEdit */
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 8px; /* Espaciado interno */
-        font-size: 14px; /* Tamaño de la fuente */
-        color: #333; /* Color del texto */
-    }</string>
-         </property>
         </widget>
        </item>
       </layout>
@@ -632,7 +612,7 @@ color: black</string>
           <string notr="true">color: rgb(255, 170, 0)</string>
          </property>
          <property name="text">
-          <string/>
+          <string>Modificando Cliente</string>
          </property>
         </widget>
        </item>
@@ -895,7 +875,6 @@ color: black</string>
   <tabstop>btnModificar</tabstop>
   <tabstop>btnEliminar</tabstop>
   <tabstop>txtBuscar</tabstop>
-  <tabstop>btnBuscar</tabstop>
   <tabstop>checkBox</tabstop>
   <tabstop>dtpFechaDesde</tabstop>
   <tabstop>dtpFechaHasta</tabstop>
@@ -1011,39 +990,7 @@ color: black</string>
     </hint>
     <hint type="destinationlabel">
      <x>1260</x>
-     <y>150</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnGuardar</sender>
-   <signal>clicked()</signal>
-   <receiver>lblModificar</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>292</x>
-     <y>658</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>398</x>
-     <y>744</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnCancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>lblModificar</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>398</x>
-     <y>658</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>398</x>
-     <y>744</y>
+     <y>148</y>
     </hint>
    </hints>
   </connection>

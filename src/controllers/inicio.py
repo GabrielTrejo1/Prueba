@@ -10,7 +10,7 @@ class Inicio():
         self.ventas = None
         self.vehiculos = None
         self.clientes = None
-        self.inicio = uic.loadUi("C:/Users/equipo/PycharmProjects/Trabajo-UTN/src/gui/inicio_02.ui")
+        self.inicio = uic.loadUi("C:/Users/equipo/PycharmProjects/Trabajo-UTN/src/gui/inicio.ui") #Cargar la interfaz
         self.inicio.show()
 
         self.initGui()

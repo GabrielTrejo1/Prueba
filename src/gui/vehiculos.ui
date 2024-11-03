@@ -98,21 +98,13 @@ background-color:#f4eee2
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="txtModelo">
-      <property name="placeholderText">
-       <string>Modelo</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnBuscar">
-      <property name="text">
-       <string>Buscar</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QTableWidget" name="tblVehiculos">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
       <property name="columnCount">
        <number>9</number>
       </property>
@@ -269,40 +261,6 @@ background-color:#f4eee2
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>772</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuinicio">
-    <property name="title">
-     <string>inicio</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuclientes">
-    <property name="title">
-     <string>clientes</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuventas">
-    <property name="title">
-     <string>ventas</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuvehiculos">
-    <property name="title">
-     <string>vehiculos</string>
-    </property>
-   </widget>
-   <addaction name="menuinicio"/>
-   <addaction name="menuclientes"/>
-   <addaction name="menuventas"/>
-   <addaction name="menuvehiculos"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

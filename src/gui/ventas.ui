@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1296</width>
-    <height>731</height>
+    <height>751</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -58,7 +58,20 @@
 		border-bottom-right-radius: 0px;
         padding: 5px;
     }
-</string>
+
+QCalendarWidget QWidget {
+        background-color: #b0a99f;
+        color: black;
+    }
+    /* Cambia el color del encabezado */
+    QCalendarWidget QAbstractItemView:enabled {
+        color: black;
+        background-color: #f4eee0;
+		border:1px solid #b0a99f
+    }</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -221,7 +234,20 @@ color: black</string>
 		border-bottom-right-radius: 0px;
         padding: 5px;
     }
-</string>
+
+QCalendarWidget QWidget {
+        background-color: #b0a99f;
+        color: black;
+    }
+    /* Cambia el color del encabezado */
+    QCalendarWidget QAbstractItemView:enabled {
+        color: black;
+        background-color: #f4eee0;
+		border:1px solid #b0a99f
+    }</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -269,6 +295,28 @@ color: black</string>
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="2" colspan="3">
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Unispace</family>
+           <pointsize>50</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+color: black</string>
+         </property>
+         <property name="text">
+          <string>Ventas</string>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="0" colspan="9">
         <widget class="QGroupBox" name="groupBox_2">
          <property name="sizePolicy">
@@ -517,7 +565,7 @@ color: black</string>
          </property>
          <property name="minimumSize">
           <size>
-           <width>540</width>
+           <width>660</width>
            <height>85</height>
           </size>
          </property>
@@ -551,7 +599,7 @@ color: black</string>
          <widget class="QLabel" name="label_4">
           <property name="geometry">
            <rect>
-            <x>290</x>
+            <x>350</x>
             <y>40</y>
             <width>31</width>
             <height>21</height>
@@ -575,7 +623,7 @@ color: black</string>
            <rect>
             <x>70</x>
             <y>30</y>
-            <width>211</width>
+            <width>271</width>
             <height>41</height>
            </rect>
           </property>
@@ -599,9 +647,9 @@ color: black</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>330</x>
+            <x>390</x>
             <y>30</y>
-            <width>111</width>
+            <width>171</width>
             <height>41</height>
            </rect>
           </property>
@@ -622,8 +670,8 @@ color: black</string>
          <widget class="QPushButton" name="pushButton">
           <property name="geometry">
            <rect>
-            <x>450</x>
-            <y>32</y>
+            <x>570</x>
+            <y>30</y>
             <width>81</width>
             <height>41</height>
            </rect>
@@ -655,6 +703,32 @@ color: black</string>
          </widget>
         </widget>
        </item>
+       <item row="2" column="1">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="5">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item row="3" column="0" colspan="9">
         <widget class="QTabWidget" name="tabWidget">
          <property name="sizePolicy">
@@ -676,45 +750,12 @@ color: black</string>
           <attribute name="title">
            <string>Clientes</string>
           </attribute>
-          <widget class="QPushButton" name="btnBuscarCliente">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>500</x>
-             <y>10</y>
-             <width>51</width>
-             <height>51</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>30</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: transparent;
-border-radius: 25px;</string>
-           </property>
-           <property name="text">
-            <string>🔍</string>
-           </property>
-          </widget>
           <widget class="QLineEdit" name="txtBuscarCliente">
            <property name="geometry">
             <rect>
-             <x>140</x>
+             <x>130</x>
              <y>20</y>
-             <width>341</width>
+             <width>421</width>
              <height>41</height>
             </rect>
            </property>
@@ -845,7 +886,7 @@ color: black</string>
             <rect>
              <x>140</x>
              <y>20</y>
-             <width>341</width>
+             <width>411</width>
              <height>41</height>
             </rect>
            </property>
@@ -926,39 +967,6 @@ border-bottom-right-radius: 10px;</string>
             </property>
            </column>
           </widget>
-          <widget class="QPushButton" name="btnBuscar_3">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>500</x>
-             <y>10</y>
-             <width>51</width>
-             <height>51</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>30</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: transparent;
-border-radius: 25px;</string>
-           </property>
-           <property name="text">
-            <string>🔍</string>
-           </property>
-          </widget>
          </widget>
         </widget>
        </item>
@@ -995,20 +1003,7 @@ border-radius: 25px;</string>
          </property>
         </spacer>
        </item>
-       <item row="6" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_10">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Fecha de Venta</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
+       <item row="6" column="2">
         <widget class="QDateEdit" name="dtpFechaRegistro">
          <property name="minimumSize">
           <size>
@@ -1026,37 +1021,50 @@ border-radius: 25px;</string>
 		border-bottom-right-radius: 0px;
         padding: 8px;
     }
-</string>
+
+QCalendarWidget QWidget {
+        background-color: #b0a99f;
+        color: black;
+    }
+    /* Cambia el color del encabezado */
+    QCalendarWidget QAbstractItemView:enabled {
+        color: black;
+        background-color: #f4eee0;
+		border:1px solid #b0a99f
+    }</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="0" column="5">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <item row="6" column="1">
+        <widget class="QLabel" name="label_10">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>12</pointsize>
+          </font>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
+         <property name="text">
+          <string>Fecha de Venta</string>
          </property>
-        </spacer>
-       </item>
-       <item row="2" column="1">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
        <item row="6" column="3">
+        <widget class="QLabel" name="label_11">
+         <property name="font">
+          <font>
+           <family>Liberation Serif</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Precio Final</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="4">
         <widget class="QLineEdit" name="txtPrecio">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1079,20 +1087,7 @@ border-radius: 25px;</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <widget class="QLabel" name="label_11">
-         <property name="font">
-          <font>
-           <family>Liberation Serif</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Precio Final</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="4">
+       <item row="6" column="5">
         <widget class="QPushButton" name="btnGuardar">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1126,28 +1121,6 @@ border-radius: 25px;</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="2" colspan="3">
-        <widget class="QLabel" name="label">
-         <property name="font">
-          <font>
-           <family>Unispace</family>
-           <pointsize>50</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: transparent;
-color: black</string>
-         </property>
-         <property name="text">
-          <string>Ventas</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -1162,8 +1135,6 @@ color: black</string>
   <tabstop>tabWidget</tabstop>
   <tabstop>txtBuscarCliente</tabstop>
   <tabstop>tblClientes</tabstop>
-  <tabstop>btnBuscar_3</tabstop>
-  <tabstop>btnBuscarCliente</tabstop>
   <tabstop>txtNombreCliente</tabstop>
   <tabstop>txtDNICliente</tabstop>
   <tabstop>pushButton</tabstop>

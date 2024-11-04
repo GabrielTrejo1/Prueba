@@ -18,6 +18,10 @@
   <property name="windowTitle">
    <string>Gestión de Vehículos</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/Icono.jpg</normaloff>img/Icono.jpg</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
 background-color:#f4eee2

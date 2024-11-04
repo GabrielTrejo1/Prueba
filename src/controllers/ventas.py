@@ -2,10 +2,11 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from PyQt5.QtCore import QDate
 from models.conexion import Conexion
+from config import base_path
 
 class Ventas():
   def __init__(self):
-    self.ventas = uic.loadUi("src/gui/ventas.ui")
+    self.ventas = uic.loadUi(f"{base_path}/src/gui/ventas.ui")
     self.ventas.show()
     self.db = Conexion()
     self.initGui()
@@ -15,6 +16,7 @@ class Ventas():
     self.ventas.txtIDCliente.setVisible(False)
     self.ventas.txtIDVehiculo.setVisible(False)
     self.ventas.dtpFechaRegistro.setDate(QDate.currentDate())
+    self.ventas.dtpFechaHasta.setDate(QDate.currentDate())
     
     # Poblar tablas
     self.cargar_ventas()

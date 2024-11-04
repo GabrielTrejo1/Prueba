@@ -3,3 +3,5 @@ env/
 src/__pycache__/
 src/controllers/__pycache__/
 src/models/__pycache__/
+build/
+dist/

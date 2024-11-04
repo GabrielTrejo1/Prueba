@@ -1,1 +1,5 @@
+__pycache__/
 env/
+src/__pycache__/
+controllers/__pycache__/
+models/__pycache__/

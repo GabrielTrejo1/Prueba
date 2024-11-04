@@ -35,7 +35,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="2" colspan="2">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkFecha">
          <property name="font">
           <font>
            <family>Liberation Serif</family>
@@ -61,6 +61,9 @@
         border-radius: 10px;
         padding: 8px;
     }</string>
+         </property>
+         <property name="placeholderText">
+          <string>Ingrese el Nombre, Apellido o DNI que desea buscar...</string>
          </property>
         </widget>
        </item>
@@ -105,7 +108,20 @@
 		border-bottom-right-radius: 0px;
         padding: 5px;
     }
-</string>
+
+QCalendarWidget QWidget {
+        background-color: #b0a99f;
+        color: black;
+    }
+    /* Cambia el color del encabezado */
+    QCalendarWidget QAbstractItemView:enabled {
+        color: black;
+        background-color: #f4eee0;
+		border:1px solid #b0a99f
+    }</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -143,7 +159,21 @@ color: black</string>
 		border-bottom-right-radius: 0px;
         padding: 5px;
     }
+
+QCalendarWidget QWidget {
+        background-color: #b0a99f;
+        color: black;
+    }
+    /* Cambia el color del encabezado */
+    QCalendarWidget QAbstractItemView:enabled {
+        color: black;
+        background-color: #f4eee0;
+		border:1px solid #b0a99f
+    }
 </string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -558,6 +588,9 @@ color: black</string>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="styleSheet">
           <string notr="true">QDateEdit {
         background-color: #ffffff;
@@ -568,7 +601,38 @@ color: black</string>
 		border-bottom-right-radius: 0px;
         padding: 8px;
     }
-</string>
+
+QCalendarWidget QWidget {
+        background-color: #b0a99f;
+        color: black;
+    }
+    /* Cambia el color del encabezado */
+    QCalendarWidget QAbstractItemView:enabled {
+        color: black;
+        background-color: #f4eee0;
+		border:1px solid #b0a99f
+    }</string>
+         </property>
+         <property name="wrapping">
+          <bool>false</bool>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="keyboardTracking">
+          <bool>false</bool>
+         </property>
+         <property name="showGroupSeparator" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::LocalTime</enum>
          </property>
         </widget>
        </item>
@@ -816,51 +880,6 @@ color: black</string>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuClientes">
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="title">
-     <string>Clientes</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuVehiculos">
-    <property name="title">
-     <string>Vehiculos</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuVentas">
-    <property name="title">
-     <string>Ventas</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuInicio">
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="title">
-     <string>Inicio</string>
-    </property>
-   </widget>
-   <addaction name="menuInicio"/>
-   <addaction name="menuClientes"/>
-   <addaction name="menuVehiculos"/>
-   <addaction name="menuVentas"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
@@ -875,7 +894,7 @@ color: black</string>
   <tabstop>btnModificar</tabstop>
   <tabstop>btnEliminar</tabstop>
   <tabstop>txtBuscar</tabstop>
-  <tabstop>checkBox</tabstop>
+  <tabstop>checkFecha</tabstop>
   <tabstop>dtpFechaDesde</tabstop>
   <tabstop>dtpFechaHasta</tabstop>
   <tabstop>tblClientes</tabstop>
@@ -890,11 +909,11 @@ color: black</string>
    <hints>
     <hint type="sourcelabel">
      <x>398</x>
-     <y>658</y>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
-     <y>510</y>
+     <y>489</y>
     </hint>
    </hints>
   </connection>
@@ -906,11 +925,11 @@ color: black</string>
    <hints>
     <hint type="sourcelabel">
      <x>398</x>
-     <y>658</y>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
-     <y>437</y>
+     <y>416</y>
     </hint>
    </hints>
   </connection>
@@ -922,11 +941,11 @@ color: black</string>
    <hints>
     <hint type="sourcelabel">
      <x>398</x>
-     <y>658</y>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
-     <y>364</y>
+     <y>343</y>
     </hint>
    </hints>
   </connection>
@@ -938,11 +957,11 @@ color: black</string>
    <hints>
     <hint type="sourcelabel">
      <x>398</x>
-     <y>658</y>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
-     <y>218</y>
+     <y>197</y>
     </hint>
    </hints>
   </connection>
@@ -954,43 +973,43 @@ color: black</string>
    <hints>
     <hint type="sourcelabel">
      <x>398</x>
-     <y>658</y>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
-     <y>218</y>
+     <y>197</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox</sender>
+   <sender>checkFecha</sender>
    <signal>clicked(bool)</signal>
    <receiver>dtpFechaDesde</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1086</x>
-     <y>60</y>
+     <x>1260</x>
+     <y>44</y>
     </hint>
     <hint type="destinationlabel">
      <x>1260</x>
-     <y>106</y>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox</sender>
+   <sender>checkFecha</sender>
    <signal>clicked(bool)</signal>
    <receiver>dtpFechaHasta</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1128</x>
-     <y>58</y>
+     <x>1260</x>
+     <y>44</y>
     </hint>
     <hint type="destinationlabel">
      <x>1260</x>
-     <y>148</y>
+     <y>127</y>
     </hint>
    </hints>
   </connection>

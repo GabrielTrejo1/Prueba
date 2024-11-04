@@ -29,31 +29,27 @@ class Clientes():
         # self.cliente.stateChanged.connect(self.cargar_datos_cliente)
 
     def cargar_datos_cliente(self):
-        try:
-            if self.cliente.checkFecha.isChecked():
-                desde = self.cliente.dtpFechaDesde.date().toString("yyyy-MM-dd")
-                hasta = self.cliente.dtpFechaHasta.date().toString("yyyy-MM-dd")
-                buscar = self.cliente.txtBuscar.text().lower()
-                buscar = self.cliente.txtBuscar.text().lower()
-                query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE (LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ?) AND fecha_registro BETWEEN ? AND ? ORDER BY ID DESC"
-                values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%", desde, hasta)
-                datos_clientes = self.db.execute_query_fetchall(query,values)
-            else:
-                buscar = self.cliente.txtBuscar.text().lower()
-                query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ? ORDER BY ID DESC"
-                values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%")
-                datos_clientes = self.db.execute_query_fetchall(query,values)
-            
-            # Llenar la tabla con los nuevos resultados
-            self.cliente.tblClientes.setRowCount(len(datos_clientes))
-            for fila, item in enumerate(datos_clientes):
-                for columna, valor in enumerate(item):
-                    self.cliente.tblClientes.setItem(fila, columna, QTableWidgetItem(str(valor)))
-            self.cliente.tblClientes.resizeColumnsToContents() #Ajustar las columnas al tamaño del mayor elemento.
-            self.cliente.tblClientes.verticalHeader().setVisible(False) #Ocultar indices de las filas.
-        except Exception as e:
-            QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
-            
+      if self.cliente.checkFecha.isChecked():
+        desde = self.cliente.dtpFechaDesde.date().toString("yyyy-MM-dd")
+        hasta = self.cliente.dtpFechaHasta.date().toString("yyyy-MM-dd")
+        buscar = self.cliente.txtBuscar.text().lower()
+        buscar = self.cliente.txtBuscar.text().lower()
+        query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE (LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ?) AND fecha_registro BETWEEN ? AND ? ORDER BY ID DESC"
+        values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%", desde, hasta)
+      else:
+        buscar = self.cliente.txtBuscar.text().lower()
+        query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ? ORDER BY ID DESC"
+        values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%")
+      datos_clientes = self.db.execute_query_fetchall(query,values)
+      
+      # Llenar la tabla con los nuevos resultados
+      self.cliente.tblClientes.setRowCount(len(datos_clientes))
+      for fila, item in enumerate(datos_clientes):
+          for columna, valor in enumerate(item):
+              self.cliente.tblClientes.setItem(fila, columna, QTableWidgetItem(str(valor)))
+      self.cliente.tblClientes.resizeColumnsToContents() #Ajustar las columnas al tamaño del mayor elemento.
+      self.cliente.tblClientes.verticalHeader().setVisible(False) #Ocultar indices de las filas.
+           
     def nuevo_cliente(self):
         confirm = QMessageBox.question(self.cliente, "Agregar Nuevo Cliente", "¿Está seguro de que desea agregar este cliente?", QMessageBox.Yes | QMessageBox.No)
         if confirm == QMessageBox.Yes:

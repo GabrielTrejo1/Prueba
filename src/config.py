@@ -2,6 +2,6 @@ import os
 import sys
 
 if hasattr(sys, '_MEIPASS'):
-    base_path = sys._MEIPASS  # Para el ejecutable empaquetado
+  base_path = sys._MEIPASS
 else:
-    base_path = os.path.abspath(".")  # Para el entorno de desarrollo
+  base_path = os.path.abspath(".")

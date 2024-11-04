@@ -6,8 +6,6 @@ from config import base_path
 
 class Inicio():
     def __init__(self):
-        self.vehiculos = None
-        self.clientes = None
         self.inicio = uic.loadUi(f"{base_path}/src/gui/inicio_2.ui")
         self.inicio.show()
 

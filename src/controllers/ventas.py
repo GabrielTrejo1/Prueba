@@ -47,7 +47,7 @@ class Ventas():
         fila +=1
       self.ventas.tblVentas.resizeColumnsToContents()
     except Exception as e:
-      QMessageBox.critical(self.vehiculo, "Error", f"No se pudo buscar la venta: {e}")
+      QMessageBox.critical(self.ventas, "Error", f"No se pudo buscar la venta: {e}")
   
   def cargar_clientes(self):
     try:

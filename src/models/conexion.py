@@ -2,12 +2,17 @@ import pyodbc
 
 class Conexion:
     def __init__(self):
-        self.data_base = 'DRIVER={SQL Server};SERVER=Ale-Notebook\\SQLEXPRESS;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;'
+        # self.data_base = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=PC\\SQLEXPRESS;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;'
         self.con = None
     
     def conectar(self):
         if not self.con:
-            self.con = pyodbc.connect(self.data_base)
+            self.con = pyodbc.connect(
+              "DRIVER={ODBC Driver 17 for SQL Server};"
+              "SERVER=PC\\SQLEXPRESS;"
+              "DATABASE=AGENCIA_AC;"
+              "Trusted_Connection=Yes;"
+            )
     
     def close(self):
         if self.con:
@@ -20,7 +25,7 @@ class Conexion:
             cursor = self.con.cursor()
             cursor.execute(query, values)
             return cursor.fetchall()
-        except Exception as e:
+        except pyodbc.Error as e:
             print(f"Error ejecutando la consulta: {e}")
             return []
         finally:
@@ -32,7 +37,7 @@ class Conexion:
             cursor = self.con.cursor()
             cursor.execute(query, values)
             self.con.commit()
-        except Exception as e:
+        except pyodbc.Error as e:
             print(f"Error ejecutando la consulta: {e}")
         finally:
             cursor.close()

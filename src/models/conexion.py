@@ -6,12 +6,7 @@ class Conexion:
   
   def conectar(self):
     if not self.con:
-      self.con = pyodbc.connect(
-        "DRIVER={ODBC Driver 17 for SQL Server};"
-        "SERVER=Ale-Notebook\\SQLEXPRESS;"
-        "DATABASE=AGENCIA_AC;"
-        "Trusted_Connection=Yes;"
-      )
+      self.con = pyodbc.connect("DSN=db_agencia")
   
   def close(self):
     if self.con:

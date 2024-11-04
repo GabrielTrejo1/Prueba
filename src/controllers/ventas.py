@@ -110,6 +110,7 @@ class Ventas():
       self.db.execute_query(query, values)
       QMessageBox.information(self.ventas,"Venta Agregada","Venta agregada con éxito.")
       self.cargar_ventas()
+      # Limpiar campos
       self.ventas.txtIDCliente.clear()
       self.ventas.txtNombreCliente.clear()
       self.ventas.txtDNICliente.clear()
@@ -120,7 +121,7 @@ class Ventas():
       self.ventas.txtColor.clear()
       self.ventas.txtPrecio.clear()
       
-  def valid(self): #Valida que almenos un campo contenga texto.
+  def valid(self):
     id_cliente = self.ventas.txtIDCliente.text()
     id_vehiculo = self.ventas.txtIDVehiculo.text()
     precio = self.ventas.txtPrecio.text()

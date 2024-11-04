@@ -5,7 +5,7 @@ from models.conexion import Conexion
 
 class Clientes():
     def __init__(self):
-        self.cliente = uic.loadUi("src/gui/cliente_2.ui")
+        self.cliente = uic.loadUi("src/gui/cliente.ui")
         self.cliente.show()
         self.db = Conexion()
         self.insert_update = False  #False = Insert , True = Update
@@ -19,21 +19,31 @@ class Clientes():
         self.cliente.btnGuardar.clicked.connect(self.guardar_cliente)
         self.cliente.btnEliminar.clicked.connect(self.eliminar_cliente)
         self.cliente.txtBuscar.textChanged.connect(self.cargar_datos_cliente)
+        self.cliente.dtpFechaDesde.dateChanged.connect(self.cargar_datos_cliente)
+        self.cliente.dtpFechaHasta.dateChanged.connect(self.cargar_datos_cliente)
+        self.cliente.checkFecha.clicked.connect(self.cargar_datos_cliente)
         self.cliente.btnModificar.clicked.connect(self.llenar_txtBox)
         self.cliente.btnCancelar.clicked.connect(self.cancelar_modificar)
+        self.cliente.lblModificar.setVisible(False)
+        # self.cliente.stateChanged.connect(self.cargar_datos_cliente)
 
-    def cargar_datos_cliente(self): #Func. para llenar la tabla de Clientes.
+    def cargar_datos_cliente(self):
         try:
-            nombre = self.cliente.txtBuscar.text().lower()
-            # Añadir comodines para coincidencias parciales
-            query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ?"
-            values = (f"{nombre}%",f"% {nombre}%")
-            datos_clientes = self.db.execute_query_fetchall(query,values)
+            if self.cliente.checkFecha.isChecked():
+                desde = self.cliente.dtpFechaDesde.date().toString("yyyy-MM-dd")
+                hasta = self.cliente.dtpFechaHasta.date().toString("yyyy-MM-dd")
+                buscar = self.cliente.txtBuscar.text().lower()
+                buscar = self.cliente.txtBuscar.text().lower()
+                query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE (LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ?) AND fecha_registro BETWEEN ? AND ? ORDER BY ID DESC"
+                values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%", desde, hasta)
+                datos_clientes = self.db.execute_query_fetchall(query,values)
+            else:
+                buscar = self.cliente.txtBuscar.text().lower()
+                query = "SELECT ID, nombre, DNI, correo, telefono, direccion, fecha_registro FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? OR LOWER(DNI) LIKE ? ORDER BY ID DESC"
+                values = (f"{buscar}%",f"% {buscar}%", f"%{buscar}%")
+                datos_clientes = self.db.execute_query_fetchall(query,values)
             
-            if not datos_clientes:  # Verificar si no hay datos
-                print("No se encontraron datos de clientes.")
-                return
-            
+            # Llenar la tabla con los nuevos resultados
             self.cliente.tblClientes.setRowCount(len(datos_clientes))
             for fila, item in enumerate(datos_clientes):
                 for columna, valor in enumerate(item):
@@ -41,9 +51,11 @@ class Clientes():
             self.cliente.tblClientes.resizeColumnsToContents() #Ajustar las columnas al tamaño del mayor elemento.
             self.cliente.tblClientes.verticalHeader().setVisible(False) #Ocultar indices de las filas.
         except Exception as e:
-            print(f"Error al cargar los clientes: {e}")
-    
+            QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
+            
     def nuevo_cliente(self):
+        confirm = QMessageBox.question(self.cliente, "Agregar Nuevo Cliente", "¿Está seguro de que desea agregar este cliente?", QMessageBox.Yes | QMessageBox.No)
+        if confirm == QMessageBox.Yes:
             nombre = self.cliente.txtNombre.text()
             dni = self.cliente.txtDNI.text()
             correo = self.cliente.txtCorreo.text()
@@ -51,13 +63,19 @@ class Clientes():
             direccion = self.cliente.txtDireccion.text()
             fechaRegistro = self.cliente.dtpFechaRegistro.date().toString("yyyy-MM-dd")
             valid = self.valid()
-            if valid == True:
+            if valid:
                 query = "INSERT INTO Clientes (nombre, DNI, correo, telefono, direccion, fecha_registro, estado) VALUES(?,?,?,?,?,?,1)"
                 values = (nombre,dni,correo,telefono,direccion,fechaRegistro)
                 
                 self.db.execute_query(query, values)
                 QMessageBox.information(self.cliente,"Cliente Agregado","Cliente agregado con éxito.")
                 self.cargar_datos_cliente()
+                self.cliente.txtNombre.clear()
+                self.cliente.txtDNI.clear()
+                self.cliente.txtCorreo.clear()
+                self.cliente.txtTelefono.clear()
+                self.cliente.txtDireccion.clear()
+                self.cliente.dtpFechaRegistro.setDate(QDate.currentDate())
     
     def eliminar_cliente(self): #Para eliminar un cliente se debe seleccionar una fila y luego pulsar el boton Eliminar.
         selected_row = self.cliente.tblClientes.currentRow()
@@ -90,6 +108,7 @@ class Clientes():
         if confirm == QMessageBox.Yes:
             self.insert_update = True #Cambio el estado para que al apretar el boton Guadar, se genere un Update
             self.cliente.btnModificar.setEnabled(False)
+            self.cliente.dtpFechaRegistro.setEnabled(False)
             self.id_cliente = self.cliente.tblClientes.item(selected_row,0).text() #Guardo el ID del Cliente que quiero Modificar
             self.cliente.txtNombre.setText(self.cliente.tblClientes.item(selected_row,1).text())
             self.cliente.txtDNI.setText(self.cliente.tblClientes.item(selected_row,2).text())
@@ -98,15 +117,14 @@ class Clientes():
             self.cliente.txtDireccion.setText(self.cliente.tblClientes.item(selected_row,5).text())
             fecha_registro = self.cliente.tblClientes.item(selected_row,6).text().split('-')
             self.cliente.dtpFechaRegistro.setDate(QDate(int(fecha_registro[0]),int(fecha_registro[1]),int(fecha_registro[2])))
-            self.cliente.lblModificar.setText("Modificando Cliente")
+            self.cliente.lblModificar.setVisible(True)
             
     def guardar_cliente(self):
         if self.insert_update == False:
             self.nuevo_cliente()
         elif self.insert_update == True:
             self.modificar_cliente()
-            self.insert_update = False
-            self.cliente.btnModificar.setEnabled(True)
+
     
     def modificar_cliente(self):
         try:
@@ -124,34 +142,28 @@ class Clientes():
                 self.db.execute_query(query,values)
                 QMessageBox.information(self.cliente,"Cliente Modificado","Cliente modificado con éxito.")
                 self.cargar_datos_cliente()
+                self.cliente.txtNombre.clear()
+                self.cliente.txtDNI.clear()
+                self.cliente.txtCorreo.clear()
+                self.cliente.txtTelefono.clear()
+                self.cliente.txtDireccion.clear()
+                self.cliente.dtpFechaRegistro.setDate(QDate.currentDate())
+                self.insert_update = False
+                self.id_cliente = ""
+                self.cliente.btnModificar.setEnabled(True)
+                self.cliente.dtpFechaRegistro.setEnabled(True)
+                self.cliente.lblModificar.setVisible(False)
         except Exception as e:
             QMessageBox.critical(self.cliente,"Error al modificar cliente",f"No se pudo modificar el cliente: {e}")
             print("No se pudo modificar el cliente:", e)
-        finally:
-            self.id_cliente = ""
     
     def cancelar_modificar(self):
         self.insert_update = False
         self.cliente.btnModificar.setEnabled(True)
+        self.cliente.dtpFechaRegistro.setEnabled(True)
+        self.cliente.lblModificar.setVisible(False)
+        self.cliente.dtpFechaRegistro.setDate(QDate.currentDate())
 
-    # def buscar_cliente(self):
-    #     try:
-    #         nombre = self.cliente.txtBuscar.text().lower()
-    #         # Añadir comodines para coincidencias parciales
-    #         query = "SELECT * FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ?"
-    #         values = (f"{nombre}%",f"% {nombre}%")
-    #         datos_clientes = self.db.execute_query_fetchall(query,values)
-
-    #         # Limpiar la tabla antes de cargar nuevos datos
-    #         self.cliente.tblClientes.setRowCount(0)
-
-    #         # Llenar la tabla con los nuevos resultados
-    #         self.cliente.tblClientes.setRowCount(len(datos_clientes))
-    #         for fila, item in enumerate(datos_clientes):
-    #             for columna, valor in enumerate(item):
-    #                 self.cliente.tblClientes.setItem(fila, columna, QTableWidgetItem(str(valor)))
-    #     except Exception as e:
-    #         QMessageBox.critical(self.cliente, "Error", f"No se pudo buscar el cliente: {e}")
             
     def valid(self): #Valida que almenos un campo contenga texto.
         nombre = self.cliente.txtNombre.text()
@@ -162,7 +174,7 @@ class Clientes():
         if (nombre+correo+telefono+direccion+dni) == "":
             QMessageBox.warning(self.cliente, "Error", "Llene almenos un campo para agregar el cliente")
             return False
+        if not dni.isdigit():
+            QMessageBox.warning(self.cliente, "Error", "El DNI solo puede contener números")
+            return False
         return True
-    
-    def filtrar_fecha(self):
-        pass

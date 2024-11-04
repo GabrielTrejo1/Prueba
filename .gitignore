@@ -1,5 +1,5 @@
 __pycache__/
 env/
 src/__pycache__/
-controllers/__pycache__/
-models/__pycache__/
+src/controllers/__pycache__/
+src/models/__pycache__/

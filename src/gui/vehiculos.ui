@@ -18,6 +18,10 @@
   <property name="windowTitle">
    <string>Gestión de Vehículos</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/Icono.jpg</normaloff>img/Icono.jpg</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
 background-color:#f4eee2
@@ -41,7 +45,7 @@ background-color:#f4eee2
     }
 
     QComboBox {
-             background-color: #d6cfc3; /* Nuevo color de fondo del botón */
+        background-color: #d6cfc3; /* Nuevo color de fondo del botón */
         border: 2px solid #b0a99f; /* Color y grosor del borde */
         border-radius: 15px; /* Bordes redondeados */
         padding: 10px; /* Espaciado interno */
@@ -55,34 +59,52 @@ background-color:#f4eee2
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="buscar">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">    QLabel {
+        background-color: #f4eee2; /* Fondo para el QLabel */
+        padding: 5px; /* Espaciado interno */
+        border: 1px solid #b0a99f; /* Borde del QLabel */
+        border-radius: 5px; /* Bordes redondeados */
+        font-weight: bold; /* Texto en negrita */
+    }</string>
+      </property>
+      <property name="text">
+       <string>BUSCAR</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QLineEdit" name="txtBuscar">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
        </font>
       </property>
-      <property name="text">
-       <string/>
-      </property>
       <property name="placeholderText">
-       <string>Ingrese Domino, Marca o Modelo...</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnBuscar">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Buscar</string>
+       <string>Ingresa marca, modelo o patente...</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QTableWidget" name="tblVehiculos">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
       <property name="columnCount">
        <number>9</number>
       </property>
@@ -96,6 +118,18 @@ background-color:#f4eee2
         <string>Combustible</string>
        </stringlist>
       </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>80</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
       <column>
        <property name="text">
         <string>ID</string>
@@ -118,12 +152,12 @@ background-color:#f4eee2
       </column>
       <column>
        <property name="text">
-        <string>Motor</string>
+        <string>Color</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Color</string>
+        <string>Motor</string>
        </property>
       </column>
       <column>
@@ -133,7 +167,7 @@ background-color:#f4eee2
       </column>
       <column>
        <property name="text">
-        <string>Tipo Combustible</string>
+        <string>Combustible</string>
        </property>
       </column>
       <column>
@@ -290,6 +324,7 @@ background-color:#f4eee2
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Inicio</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/Icono.jpg</normaloff>img/Icono.jpg</iconset>
+  </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
@@ -170,7 +174,7 @@ QPushButton:hover {
 </string>
       </property>
       <property name="text">
-       <string>Tipo financiamiento</string>
+       <string>Financiamiento</string>
       </property>
       <property name="flat">
        <bool>false</bool>

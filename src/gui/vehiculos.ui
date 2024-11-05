@@ -55,26 +55,17 @@ background-color:#f4eee2
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLineEdit" name="txtMarca">
+     <widget class="QLineEdit" name="txtBuscar">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
        </font>
       </property>
-      <property name="placeholderText">
-       <string>Marca</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="txtModelo">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
+      <property name="text">
+       <string/>
       </property>
       <property name="placeholderText">
-       <string>Modelo</string>
+       <string>Ingrese Domino, Marca o Modelo...</string>
       </property>
      </widget>
     </item>
@@ -147,7 +138,7 @@ background-color:#f4eee2
       </column>
       <column>
        <property name="text">
-        <string>Dealles</string>
+        <string>Detalles</string>
        </property>
       </column>
      </widget>

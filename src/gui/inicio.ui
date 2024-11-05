@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>Inicio</string>
   </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: #f4eee2;</string>
   </property>

@@ -7,8 +7,6 @@ from controllers.ventas import Ventas
 
 class Inicio():
     def __init__(self):
-        self.vehiculos = None
-        self.clientes = None
         self.inicio = uic.loadUi("src/gui/inicio.ui")
         self.inicio.show()
 

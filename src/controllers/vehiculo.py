@@ -12,29 +12,12 @@ class Vehiculos():
         self.initGui()
 
     def initGui(self):
-        query = "SELECT * FROM Vehiculos"
-        datos_vehiculos = self.db.execute_query_fetchall(query)
-
-        self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
+        self.cargar_datos_vehiculos()
         self.vehiculo.btnAgregar.clicked.connect(self.nuevo_vehiculo)
         self.vehiculo.btnEliminar.clicked.connect(self.eliminar_vehiculo)
-        self.vehiculo.btnBuscar.clicked.connect(self.buscar_vehiculo)
 
         # Conectar la señal textChanged del campo de texto
-        self.vehiculo.txtMarca.textChanged.connect(self.buscar_vehiculo)
-        self.vehiculo.txtModelo.textChanged.connect(self.buscar_vehiculo)
-        for fila, item in enumerate(datos_vehiculos):
-            for columna, valor in enumerate(item):
-                self.vehiculo.tblVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
-
-    def cargar_datos_vehiculos(self):
-        query = "SELECT * FROM Vehiculos"
-        datos_vehiculos = self.db.execute_query_fetchall(query)
-
-        self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
-        for fila, item in enumerate(datos_vehiculos):
-            for columna, valor in enumerate(item):
-                self.vehiculo.tblVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
+        self.vehiculo.txtBuscar.textChanged.connect(self.cargar_datos_vehiculos)
 
     def nuevo_vehiculo(self):
         try:
@@ -56,23 +39,21 @@ class Vehiculos():
         except Exception as e:
             QMessageBox.critical(self.vehiculo, "Error", str(e))
 
-    def buscar_vehiculo(self):
+    def cargar_datos_vehiculos(self):
         try:
-            marca = self.vehiculo.txtMarca.text().strip().lower()
-            modelo = self.vehiculo.txtModelo.text().strip().lower()
-            query = "SELECT * FROM Vehiculos WHERE Marca LIKE ? AND Modelo LIKE ?"
-            values = (f"{marca}%", f"{modelo}%")
+            buscar = self.vehiculo.txtBuscar.text().strip().lower()
+            query = "SELECT ID, marca, modelo, color, dominio FROM Vehiculos WHERE marca LIKE ? OR modelo LIKE ? OR dominio LIKE ?"
+            values = (f"{buscar}%", f"{buscar}%", f"{buscar}%")
             datos_vehiculos = self.db.execute_query_fetchall(query,values)
 
-              # Limpiar la tabla antes de cargar nuevos datos
+            # Limpiar la tabla antes de cargar nuevos datos
             self.vehiculo.tblVehiculos.setRowCount(0)
-
             self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
             for fila, item in enumerate(datos_vehiculos):
                 for columna, valor in enumerate(item):
                     self.vehiculo.tblVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
         except Exception as e:
-            QMessageBox.critical(self.vehiculo, "Error", f"No se pudo buscar el vehiculo: {e}")
+            QMessageBox.critical(self.vehiculo, "Error", f"No se pudo buscar el vehículo: {e}")
 
     def eliminar_vehiculo(self):
         try:

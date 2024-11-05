@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1317</width>
+    <width>1321</width>
     <height>751</height>
    </rect>
   </property>
@@ -534,6 +534,9 @@ border-bottom-right-radius: 10px;</string>
              <property name="sortingEnabled">
               <bool>true</bool>
              </property>
+             <attribute name="horizontalHeaderStretchLastSection">
+              <bool>false</bool>
+             </attribute>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
              </attribute>
@@ -624,6 +627,9 @@ border-bottom-right-radius: 10px;</string>
              <property name="sortingEnabled">
               <bool>true</bool>
              </property>
+             <attribute name="horizontalHeaderStretchLastSection">
+              <bool>false</bool>
+             </attribute>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
              </attribute>
@@ -753,6 +759,9 @@ border-bottom-right-radius: 10px;</string>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>false</bool>
+         </attribute>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>

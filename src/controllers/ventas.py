@@ -79,7 +79,7 @@ class Ventas():
         
   def cargar_vehiculos(self):
     busqueda = self.ventas.txtBuscarVehiculo.text().strip().lower()
-    query = "SELECT ID, marca, modelo, color, dominio FROM Vehiculos WHERE marca LIKE ? OR modelo LIKE ? OR dominio LIKE ? ORDER BY id DESC"
+    query = "SELECT ID, marca, modelo, color, dominio FROM Vehiculos WHERE (LOWER(marca) LIKE ? OR LOWER(modelo) LIKE ? OR LOWER(dominio) LIKE ?) AND disponible = 1 ORDER BY id DESC"
     values = (f"%{busqueda}%", f"%{busqueda}%", f"%{busqueda}%")
     datos_vehiculos = self.db.execute_query_fetchall(query,values)
 
@@ -118,6 +118,12 @@ class Ventas():
                 )
       
       self.db.execute_query(query, values)
+      # Modificar disponibilidad del vehículo
+      query_update = "UPDATE Vehiculos SET disponible = 0 WHERE ID = ?"
+      values = (self.ventas.txtIDVehiculo.text())
+      self.db.execute_query(query_update, values)
+      self.cargar_vehiculos()
+
       QMessageBox.information(self.ventas,"Venta Agregada","Venta agregada con éxito.")
       self.cargar_ventas()
       # Limpiar campos después de guardar una venta

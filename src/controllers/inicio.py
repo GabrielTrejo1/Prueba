@@ -25,6 +25,6 @@ class Inicio():
 
     def abrirClientes(self):
         self.clientes = Clientes()
-    
+
     def abrirVentas(self):
         self.ventas = Ventas()

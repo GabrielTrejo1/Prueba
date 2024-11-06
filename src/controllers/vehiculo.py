@@ -119,22 +119,14 @@ class Vehiculos():
         return True
 
     def seleccionar_vehiculo(self, item):
-        row = item.row()
-        self.vehiculo.txtMarcaAdd.setText(self.vehiculo.tblVehiculos.item(row, 1).text())
-        self.vehiculo.txtModeloAdd.setText(self.vehiculo.tblVehiculos.item(row, 2).text())
-        self.vehiculo.txtColor.setText(self.vehiculo.tblVehiculos.item(row, 3).text())
-        self.vehiculo.txtPatente.setText(self.vehiculo.tblVehiculos.item(row, 4).text())
-        self.vehiculo.txtMotor.setText(self.vehiculo.tblVehiculos.item(row, 5).text())
-        self.vehiculo.txtCarroceria.setText(self.vehiculo.tblVehiculos.item(row, 6).text())
-        self.vehiculo.cmbCombustible.setCurrentText(self.vehiculo.tblVehiculos.item(row, 7).text())
-        self.vehiculo.txtDetalles.setText(self.vehiculo.tblVehiculos.item(row, 8).text())
-
-
-
-
-
-
-
-
+            row = item.row()
+            self.vehiculo.txtMarcaAdd.setText(self.vehiculo.tblVehiculos.item(row, 1).text())
+            self.vehiculo.txtModeloAdd.setText(self.vehiculo.tblVehiculos.item(row, 2).text())
+            self.vehiculo.txtColor.setText(self.vehiculo.tblVehiculos.item(row, 3).text())
+            self.vehiculo.txtPatente.setText(self.vehiculo.tblVehiculos.item(row, 4).text())
+            self.vehiculo.txtMotor.setText(self.vehiculo.tblVehiculos.item(row, 5).text())
+            self.vehiculo.txtCarroceria.setText(self.vehiculo.tblVehiculos.item(row, 6).text())
+            self.vehiculo.cmbCombustible.setCurrentText(self.vehiculo.tblVehiculos.item(row, 7).text())
+            self.vehiculo.txtDetalles.setText(self.vehiculo.tblVehiculos.item(row, 8).text())
 
 

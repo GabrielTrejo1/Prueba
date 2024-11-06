@@ -82,3 +82,4 @@ class EstadoVehiculos():
 # OCULTAR ID
 # self.ventas.txtIDVehiculo.setVisible(False)
 # EN INITGUI
+#

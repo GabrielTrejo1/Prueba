@@ -2,7 +2,7 @@ import pyodbc
 
 class Conexion:
     def __init__(self):
-        self.data_base = 'DRIVER={SQL Server};SERVER=DESKTOP-B2OVTGG;DATABASE=AGENCIA_AC;Trusted_Connection=Yes;'
+        self.data_base = r'Driver=SQL Server;Server=MOZZINETAPC\SQLEXPRESS;Database=AGENCIA_AC;Trusted_Connection=yes;'
         self.con = None
     
     def conectar(self):

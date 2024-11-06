@@ -1,21 +1,23 @@
 from PyQt5 import uic
-from controllers.cliente import Clientes
-from models.conexion import Conexion
+from src.controllers.cliente import Clientes
+from src.models.conexion import Conexion
 from PyQt5.QtCore import QDate
-from controllers.vehiculo import Vehiculos
-from controllers.ventas import Ventas
+from src.controllers.vehiculo import Vehiculos
+from src.controllers.ventas import Ventas
+from src.controllers.estadoVehiculos import EstadoVehiculos
 
 class Inicio():
     def __init__(self):
         self.vehiculos = None
         self.clientes = None
-        self.inicio = uic.loadUi("src/gui/inicio_2.ui")
+        self.inicio = uic.loadUi("./gui/inicio_2.ui")
         self.inicio.show()
 
         self.initGui()
 
     def initGui(self):
         self.inicio.btnClientes.clicked.connect(self.abrirClientes)
+        self.inicio.btnEstadoVehiculo.clicked.connect(self.abrirEstadoVehiculos)
         self.inicio.btnVehiculos.clicked.connect(self.abrirVehiculos)
         self.inicio.btnVentas.clicked.connect(self.abrirVentas)
 
@@ -27,3 +29,6 @@ class Inicio():
     
     def abrirVentas(self):
         self.ventas = Ventas()
+
+    def abrirEstadoVehiculos(self):
+        self.estadovehiculos = EstadoVehiculos()

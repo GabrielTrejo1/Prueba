@@ -1,11 +1,11 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from PyQt5.QtCore import QDate
-from models.conexion import Conexion
+from src.models.conexion import Conexion
 
 class Vehiculos():
     def __init__(self):
-        self.vehiculo = uic.loadUi("src/gui/vehiculos.ui")
+        self.vehiculo = uic.loadUi("./gui/vehiculos.ui")
         self.vehiculo.show()
         self.db = Conexion()
 

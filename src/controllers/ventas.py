@@ -1,11 +1,11 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from PyQt5.QtCore import QDate
-from models.conexion import Conexion
+from src.models.conexion import Conexion
 
 class Ventas():
   def __init__(self):
-    self.ventas = uic.loadUi("src/gui/ventas.ui")
+    self.ventas = uic.loadUi("./gui/ventas.ui")
     self.ventas.show()
     self.db = Conexion()
     self.initGui()

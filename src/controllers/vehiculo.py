@@ -18,6 +18,7 @@ class Vehiculos():
         self.vehiculo.tblVehiculos.setRowCount(len(datos_vehiculos))
         self.vehiculo.btnAgregar.clicked.connect(self.nuevo_vehiculo)
         self.vehiculo.btnEliminar.clicked.connect(self.eliminar_vehiculo)
+        self.vehiculo.tblVehiculos.itemDoubleClicked.connect(self.seleccionar_vehiculo)
 
         # Conectar la señal textChanged del campo de texto
         self.vehiculo.txtMarca.textChanged.connect(self.buscar_vehiculo)
@@ -116,6 +117,18 @@ class Vehiculos():
             return False
 
         return True
+
+    def seleccionar_vehiculo(self, item):
+        row = item.row()
+        self.vehiculo.txtMarcaAdd.setText(self.vehiculo.tblVehiculos.item(row, 1).text())
+        self.vehiculo.txtModeloAdd.setText(self.vehiculo.tblVehiculos.item(row, 2).text())
+        self.vehiculo.txtColor.setText(self.vehiculo.tblVehiculos.item(row, 3).text())
+        self.vehiculo.txtPatente.setText(self.vehiculo.tblVehiculos.item(row, 4).text())
+        self.vehiculo.txtMotor.setText(self.vehiculo.tblVehiculos.item(row, 5).text())
+        self.vehiculo.txtCarroceria.setText(self.vehiculo.tblVehiculos.item(row, 6).text())
+        self.vehiculo.cmbCombustible.setCurrentText(self.vehiculo.tblVehiculos.item(row, 7).text())
+        self.vehiculo.txtDetalles.setText(self.vehiculo.tblVehiculos.item(row, 8).text())
+
 
 
 

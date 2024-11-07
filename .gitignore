@@ -1,7 +1,8 @@
-# Ignorar el entorno virtual
-venv/
-env/
-
-# Ignorar archivos de compilación de Python
-*.pyc
 __pycache__/
+env/
+src/__pycache__/
+src/controllers/__pycache__/
+src/models/__pycache__/
+build/
+dist/
+*.pyc

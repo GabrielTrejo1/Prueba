@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1296</width>
+    <width>1317</width>
     <height>751</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>img/AC Automotores.jpg</normaloff>img/AC Automotores.jpg</iconset>
+    <normaloff>img/Icono.jpg</normaloff>img/Icono.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#f4eee2</string>
@@ -89,6 +89,9 @@ QCalendarWidget QWidget {
         background-color: #f4eee0;
 		border:1px solid #b0a99f
     }</string>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy</string>
          </property>
          <property name="calendarPopup">
           <bool>true</bool>
@@ -775,13 +778,13 @@ border-bottom-right-radius: 10px;</string>
          </column>
          <column>
           <property name="text">
-           <string>Fecha Compra</string>
+           <string>Fecha Venta</string>
           </property>
          </column>
         </widget>
        </item>
        <item row="0" column="3" colspan="2">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkFecha">
          <property name="font">
           <font>
            <family>Liberation Serif</family>
@@ -789,7 +792,7 @@ border-bottom-right-radius: 10px;</string>
           </font>
          </property>
          <property name="text">
-          <string>Filtrar por fecha de Venta</string>
+          <string>Filtrar por Fecha de Venta</string>
          </property>
         </widget>
        </item>
@@ -846,6 +849,9 @@ QCalendarWidget QWidget {
 		border:1px solid #b0a99f
     }</string>
          </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy</string>
+         </property>
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
@@ -896,6 +902,9 @@ QCalendarWidget QWidget {
         background-color: #f4eee0;
 		border:1px solid #b0a99f
     }</string>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MM/yyyy</string>
          </property>
          <property name="calendarPopup">
           <bool>true</bool>
@@ -1118,7 +1127,7 @@ QCalendarWidget QWidget {
    </hints>
   </connection>
   <connection>
-   <sender>checkBox</sender>
+   <sender>checkFecha</sender>
    <signal>clicked(bool)</signal>
    <receiver>dtpFechaDesde</receiver>
    <slot>setEnabled(bool)</slot>
@@ -1134,7 +1143,7 @@ QCalendarWidget QWidget {
    </hints>
   </connection>
   <connection>
-   <sender>checkBox</sender>
+   <sender>checkFecha</sender>
    <signal>clicked(bool)</signal>
    <receiver>dtpFechaHasta</receiver>
    <slot>setEnabled(bool)</slot>

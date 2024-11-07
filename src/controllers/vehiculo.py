@@ -1,13 +1,14 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
-from PyQt5.QtCore import QDate
 from models.conexion import Conexion
+from config import base_path
 
 class Vehiculos():
     def __init__(self):
-        self.vehiculo = uic.loadUi("src/gui/vehiculos.ui")
+        self.vehiculo = uic.loadUi(f"{base_path}/src/gui/vehiculos.ui")
         self.vehiculo.show()
         self.db = Conexion()
+        self.id = None
 
         self.initGui()
 
@@ -18,26 +19,38 @@ class Vehiculos():
 
         # Conectar la señal textChanged del campo de texto
         self.vehiculo.txtBuscar.textChanged.connect(self.cargar_datos_vehiculos)
+        self.vehiculo.btnModificar.clicked.connect(self.modificar_vehiculo)
+
+        # Conectar el doble clic para seleccionar un vehículo
+        self.vehiculo.tblVehiculos.itemDoubleClicked.connect(self.seleccionar_vehiculo)
 
     def nuevo_vehiculo(self):
-        try:
-            marca = self.vehiculo.txtMarcaAdd.text()
-            modelo = self.vehiculo.txtModeloAdd.text()
-            color = self.vehiculo.txtColor.text()
-            carroceria = self.vehiculo.txtCarroceria.text()
-            combustible = self.vehiculo.cmbCombustible.currentText()
-            motor = self.vehiculo.txtMotor.text()
-            detalles = self.vehiculo.txtDetalles.text()
-            dominio = self.vehiculo.txtPatente.text()
+        warning = QMessageBox.question(self.vehiculo, "Agregar Nuevo Vehiculo",
+                                       "¿Está seguro de que desea agregar este vehiculo?",
+                                       QMessageBox.Yes | QMessageBox.No)
+        if warning == QMessageBox.Yes:
+            # Validar antes de continuar
+            if self.validar():
+                marca = self.vehiculo.txtMarcaAdd.text().strip()
+                modelo = self.vehiculo.txtModeloAdd.text().strip()
+                color = self.vehiculo.txtColor.text().strip()
+                carroceria = self.vehiculo.txtCarroceria.text().strip()
+                combustible = self.vehiculo.cmbCombustible.currentText().strip()
+                motor = self.vehiculo.txtMotor.text().strip()
+                detalles = self.vehiculo.txtDetalles.text().strip()
+                dominio = self.vehiculo.txtPatente.text().strip()
 
-            query = ("INSERT INTO Vehiculos (dominio, marca, modelo, motor, color, carroceria, tipo_combustible, detalles)"
-                     " VALUES(?,?,?,?,?,?,?,?)")
-            values = (dominio, marca, modelo, motor, color, carroceria, combustible, detalles)
-            self.db.execute_query(query,values)
-            QMessageBox.information(self.vehiculo, "Información", "Se ha registrado el vehículo")
-            self.cargar_datos_vehiculos()
-        except Exception as e:
-            QMessageBox.critical(self.vehiculo, "Error", str(e))
+                query = (
+                    "INSERT INTO Vehiculos (dominio, marca, modelo, motor, color, carroceria, tipo_combustible, detalles, disponible) "
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?,1)"
+                )
+                values = (dominio, marca, modelo, motor, color, carroceria, combustible, detalles)
+
+                self.db.execute_query(query, values)
+                QMessageBox.information(self.vehiculo, "Información", "Se ha registrado el vehículo")
+                self.cargar_datos_vehiculos()
+                # Limpiar campos después de agregar
+                self.limpiar_campos()
 
     def cargar_datos_vehiculos(self):
         try:
@@ -61,7 +74,7 @@ class Vehiculos():
             if row >= 0:
                 vehiculo_id = self.vehiculo.tblVehiculos.item(row, 0).text()
                 query = "DELETE FROM Vehiculos WHERE ID = ?"
-                self.db.execute_query(query,vehiculo_id)
+                self.db.execute_query(query, vehiculo_id)
                 QMessageBox.information(self.vehiculo, "Éxito", "Vehiculo eliminado con éxito.")
                 self.cargar_datos_vehiculos()
             else:
@@ -69,9 +82,75 @@ class Vehiculos():
         except Exception as e:
             QMessageBox.critical(self.vehiculo, "Error", f"No se pudo eliminar el vehiculo: {e}")
 
+    def validar(self):
+        marca = self.vehiculo.txtMarcaAdd.text().strip()
+        modelo = self.vehiculo.txtModeloAdd.text().strip()
+        color = self.vehiculo.txtColor.text().strip()
+        carroceria = self.vehiculo.txtCarroceria.text().strip()
+        combustible = self.vehiculo.cmbCombustible.currentText().strip()
+        motor = self.vehiculo.txtMotor.text().strip()
+        detalles = self.vehiculo.txtDetalles.text().strip()
+        dominio = self.vehiculo.txtPatente.text().strip()
 
+        # Verificar que todos los campos necesarios estén completos
+        if not all([marca, modelo, color, carroceria, combustible, motor, detalles, dominio]):
+            QMessageBox.warning(self.vehiculo, "Error", "Todos los campos son obligatorios.SI no posee informacion coloque 0")
+            return False
 
+        return True
 
+    def seleccionar_vehiculo(self, item):
+        row = item.row()
+        self.id = self.vehiculo.tblVehiculos.item(row, 0).text()  # Guardar el ID del vehículo seleccionado
+        self.vehiculo.txtMarcaAdd.setText(self.vehiculo.tblVehiculos.item(row, 1).text())
+        self.vehiculo.txtModeloAdd.setText(self.vehiculo.tblVehiculos.item(row, 2).text())
+        self.vehiculo.txtColor.setText(self.vehiculo.tblVehiculos.item(row, 3).text())
+        self.vehiculo.txtPatente.setText(self.vehiculo.tblVehiculos.item(row, 4).text())
+        self.vehiculo.txtMotor.setText(self.vehiculo.tblVehiculos.item(row, 5).text())
+        self.vehiculo.txtCarroceria.setText(self.vehiculo.tblVehiculos.item(row, 6).text())
+        self.vehiculo.cmbCombustible.setCurrentText(self.vehiculo.tblVehiculos.item(row, 7).text())
+        self.vehiculo.txtDetalles.setText(self.vehiculo.tblVehiculos.item(row, 8).text())
 
+    def limpiar_campos(self):
+        self.vehiculo.txtMarcaAdd.clear()
+        self.vehiculo.txtModeloAdd.clear()
+        self.vehiculo.txtColor.clear()
+        self.vehiculo.txtCarroceria.clear()
+        self.vehiculo.cmbCombustible.setCurrentIndex(0)
+        self.vehiculo.txtMotor.clear()
+        self.vehiculo.txtDetalles.clear()
+        self.vehiculo.txtPatente.clear()
+        self.id = None
 
+    def modificar_vehiculo(self):
+        if self.id is not None:  # Verificar que un vehículo ha sido seleccionado
+            warning = QMessageBox.question(self.vehiculo, "Modificar Vehículo",
+                                       "¿Está seguro de que desea modificar este vehículo?",
+                                       QMessageBox.Yes | QMessageBox.No)
+            if warning == QMessageBox.Yes:
+                try:
+                    marca = self.vehiculo.txtMarcaAdd.text().strip()
+                    modelo = self.vehiculo.txtModeloAdd.text().strip()
+                    color = self.vehiculo.txtColor.text().strip()
+                    dominio = self.vehiculo.txtPatente.text().strip()
+                    motor = self.vehiculo.txtMotor.text().strip()
+                    carroceria = self.vehiculo.txtCarroceria.text().strip()
+                    combustible = self.vehiculo.cmbCombustible.currentText().strip()
+                    detalles = self.vehiculo.txtDetalles.text().strip()
 
+                    valid = self.validar()
+                    if valid:
+                        query = (
+                            "UPDATE Vehiculos SET dominio = ?, marca = ?, modelo = ?, color = ?, motor = ?, "
+                            "carroceria = ?, tipo_combustible = ?, detalles = ? WHERE id = ?"
+                        )
+                        values = (dominio, marca, modelo, color, motor, carroceria, combustible, detalles, self.id)
+                        self.db.execute_query(query, values)
+                        QMessageBox.information(self.vehiculo, "Éxito", "Se modificó el vehículo satisfactoriamente.")
+                        self.cargar_datos_vehiculos()
+                        self.limpiar_campos()  # Limpiar campos después de modificar
+                except Exception as e:
+                    QMessageBox.critical(self.vehiculo, "Error",
+                                     f"Ha ocurrido un error al intentar modificar el vehículo: {e}")
+        else:
+            QMessageBox.warning(self.vehiculo, "Advertencia", "Seleccione un vehículo para modificar.")

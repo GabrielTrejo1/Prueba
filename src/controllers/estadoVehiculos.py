@@ -24,6 +24,8 @@ class EstadoVehiculos():
         self.estadoVehiculos.tblEstVehiculos.setColumnHidden(1, True)
         self.estadoVehiculos.tblEstVehiculos.setColumnHidden(2, True)
 
+        self.estadoVehiculos.txtBuscarVehiculo.textChanged.connect(self.buscar_vehiculo)
+
     def cargar_datos_vehiculos(self):
         query = "select ID, dominio, marca, modelo, color from VEHICULOS"
         datos_vehiculos = self.db.execute_query_fetchall(query)
@@ -42,6 +44,23 @@ class EstadoVehiculos():
         for fila, item in enumerate(datos_estado):
             for columna, valor in enumerate(item):
                 self.estadoVehiculos.tblEstVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
+
+    def buscar_vehiculo(self):
+        try:
+            buscar = self.estadoVehiculos.txtBuscarVehiculo.text().strip().lower()
+            query = "SELECT * FROM Vehiculos WHERE LOWER(Marca) LIKE ? OR LOWER(Modelo) LIKE ? OR LOWER(Dominio) LIKE ?"
+            values = (f"{buscar}%", f"{buscar}%", f"{buscar}%")
+            datos_vehiculos = self.db.execute_query_fetchall(query, values)
+
+            # Limpiar la tabla antes de cargar nuevos datos
+            self.estadoVehiculos.tblVehiculos.setRowCount(0)
+
+            self.estadoVehiculos.tblVehiculos.setRowCount(len(datos_vehiculos))
+            for fila, item in enumerate(datos_vehiculos):
+                for columna, valor in enumerate(item):
+                    self.estadoVehiculos.tblVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
+        except Exception as e:
+            QMessageBox.critical(self.estadoVehiculos, "Error", f"No se pudo buscar el vehiculo: {e}")
 
     def seleccionar_vehiculo(self):
         row = self.estadoVehiculos.tblVehiculos.currentRow()

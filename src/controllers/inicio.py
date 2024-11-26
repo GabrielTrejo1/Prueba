@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QDesktopWidget
 from controllers.cliente import Clientes
 from controllers.vehiculo import Vehiculos
 from controllers.ventas import Ventas
+from controllers.estadoVehiculos import EstadoVehiculos
 from config import base_path
 
 class Inicio():
@@ -16,6 +17,7 @@ class Inicio():
         self.inicio.btnClientes.clicked.connect(self.abrirClientes)
         self.inicio.btnVehiculos.clicked.connect(self.abrirVehiculos)
         self.inicio.btnVentas.clicked.connect(self.abrirVentas)
+        self.inicio.btnEstadoVehiculo.clicked.connect(self.abrirEstadoVehiculos)
         
     def center(self):
         qr = self.inicio.frameGeometry()
@@ -31,3 +33,6 @@ class Inicio():
     
     def abrirVentas(self):
         self.ventas = Ventas()
+
+    def abrirEstadoVehiculos(self):
+        self.estadovehiculos = EstadoVehiculos()

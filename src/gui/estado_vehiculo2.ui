@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Estado de Vehículos</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/Icono.jpg</normaloff>img/Icono.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
@@ -25,7 +29,6 @@ background-color:#f4eee2
         font-size: 16px; /* Tamaño de la fuente */
         color: #333; /* Color del texto */
         text-align: center; /* Centrar texto */
-        transition: background-color 0.3s; /* Transición suave para el hover */
     }
 
     QPushButton:hover {
@@ -49,7 +52,6 @@ background-color:#f4eee2
         font-size: 16px; /* Tamaño de la fuente */
         color: #333; /* Color del texto */
         text-align: center; /* Centrar texto */
-        transition: background-color 0.3s; /* Transición suave para
     }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -61,11 +63,6 @@ background-color:#f4eee2
       <width>341</width>
       <height>41</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
@@ -119,11 +116,6 @@ color: black</string>
       <height>51</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
@@ -143,7 +135,7 @@ border-radius: 25px;</string>
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>591</width>
+      <width>831</width>
       <height>81</height>
      </rect>
     </property>
@@ -163,7 +155,7 @@ border-radius: 25px;</string>
 color: black</string>
     </property>
     <property name="text">
-     <string>Estado de vehículos</string>
+     <string>Estado de Vehículos</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtDominio">
@@ -177,11 +169,6 @@ color: black</string>
       <width>211</width>
       <height>41</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
@@ -242,11 +229,6 @@ color: black</string>
       <height>41</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
         background-color: #ffffff;
@@ -270,11 +252,6 @@ color: black</string>
       <width>211</width>
       <height>41</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
@@ -403,11 +380,6 @@ color: black</string>
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
     <property name="styleSheet">
      <string notr="true">    QPushButton {
         background-color: #d6cfc3;
@@ -475,11 +447,6 @@ color: black</string>
       <height>0</height>
      </size>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
         background-color: #ffffff;
@@ -541,11 +508,6 @@ color: black</string>
       <width>240</width>
       <height>0</height>
      </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
@@ -700,11 +662,6 @@ color: black</string>
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
     <property name="styleSheet">
      <string notr="true">    QPushButton {
         background-color: #d6cfc3;
@@ -753,11 +710,6 @@ color: black</string>
       <height>41</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {
         background-color: #ffffff;
@@ -781,11 +733,6 @@ color: black</string>
       <width>211</width>
       <height>41</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">    QLineEdit {

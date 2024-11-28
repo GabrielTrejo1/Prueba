@@ -3,6 +3,7 @@ from src.controllers.inicio import Inicio
 from src.controllers.cliente import Clientes
 from src.controllers.ventas import Ventas
 from src.controllers.vehiculo import Vehiculos
+from src.controllers.boleto import Boleto
 
 
 class App():

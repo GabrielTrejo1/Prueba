@@ -398,7 +398,7 @@ QPushButton:hover {
 </string>
       </property>
       <property name="text">
-       <string>Servicios</string>
+       <string> Generar Boleto</string>
       </property>
       <property name="flat">
        <bool>false</bool>

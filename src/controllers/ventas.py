@@ -65,7 +65,7 @@ class Ventas():
   
   def cargar_clientes(self):
     busqueda = self.ventas.txtBuscarCliente.text().strip().lower()
-    query = "SELECT ID, nombre, dni FROM Clientes WHERE LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ? ORDER BY id DESC"
+    query = "SELECT ID, nombre, dni FROM Clientes WHERE (LOWER(nombre) LIKE ? OR LOWER(nombre) LIKE ?) AND estado = 1 ORDER BY id DESC"
     values = (f"{busqueda}%", f"% {busqueda}%") # Nombre - Apellido
     datos_clientes = self.db.execute_query_fetchall(query,values)
 

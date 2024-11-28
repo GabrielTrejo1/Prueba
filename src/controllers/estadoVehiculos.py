@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from PyQt5.QtCore import QDate
 from models.conexion import Conexion
 from config import base_path
@@ -25,6 +25,8 @@ class EstadoVehiculos():
         self.estadoVehiculos.tblEstVehiculos.setColumnHidden(1, True)
         self.estadoVehiculos.tblEstVehiculos.setColumnHidden(2, True)
 
+        self.estadoVehiculos.txtBuscarVehiculo.textChanged.connect(self.buscar_vehiculo)
+
     def cargar_datos_vehiculos(self):
         query = "select ID, dominio, marca, modelo, color from VEHICULOS"
         datos_vehiculos = self.db.execute_query_fetchall(query)
@@ -43,6 +45,23 @@ class EstadoVehiculos():
         for fila, item in enumerate(datos_estado):
             for columna, valor in enumerate(item):
                 self.estadoVehiculos.tblEstVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
+
+    def buscar_vehiculo(self):
+        try:
+            buscar = self.estadoVehiculos.txtBuscarVehiculo.text().strip().lower()
+            query = "SELECT ID, dominio, marca, modelo, color FROM Vehiculos WHERE LOWER(Marca) LIKE ? OR LOWER(Modelo) LIKE ? OR LOWER(Dominio) LIKE ?"
+            values = (f"{buscar}%", f"{buscar}%", f"{buscar}%")
+            datos_vehiculos = self.db.execute_query_fetchall(query, values)
+
+            # Limpiar la tabla antes de cargar nuevos datos
+            self.estadoVehiculos.tblVehiculos.setRowCount(0)
+
+            self.estadoVehiculos.tblVehiculos.setRowCount(len(datos_vehiculos))
+            for fila, item in enumerate(datos_vehiculos):
+                for columna, valor in enumerate(item):
+                    self.estadoVehiculos.tblVehiculos.setItem(fila, columna, QTableWidgetItem(str(valor)))
+        except Exception as e:
+            QMessageBox.critical(self.estadoVehiculos, "Error", f"No se pudo buscar el vehiculo: {e}")
 
     def seleccionar_vehiculo(self):
         row = self.estadoVehiculos.tblVehiculos.currentRow()
@@ -80,40 +99,79 @@ class EstadoVehiculos():
         self.estadoVehiculos.dtpFechaService.setEnabled(True)
         self.estadoVehiculos.btnGuardar.setEnabled(True)
 
+        try:
+            self.estadoVehiculos.txtEstadoGral.clear()
+            self.estadoVehiculos.txtKilometraje.clear()
+
+            query = (
+                f"select EV.id, EV.id_vehiculos, EV.estado_general, EV.deudas, EV.papeles, EV.kilometraje, EV.fecha_estado from VEHICULOS as V "
+                f"join ESTADOS_VEHICULOS as EV on V.ID = EV.id_vehiculos where EV.id_vehiculos = {self.estadoVehiculos.txtID.text()}")
+            datos_estado = self.db.execute_query_fetchall(query)
+            kilometros = str(datos_estado[0][5])
+
+            self.estadoVehiculos.txtEstadoGral.setText(datos_estado[0][2])
+            self.estadoVehiculos.txtKilometraje.setText(kilometros)
+
+            # Deudas
+            if self.estadoVehiculos.tblEstVehiculos.item(datos_estado[0][3]).text() == 'No':
+                self.estadoVehiculos.cmbDeuda.setCurrentIndex(0)
+            else:
+                self.estadoVehiculos.cmbDeuda.setCurrentIndex(1)
+
+            # Papeles
+            if self.estadoVehiculos.tblEstVehiculos.item(datos_estado[0][4]).text() == 'Si':
+                self.estadoVehiculos.cmbPapeles.setCurrentIndex(0)
+            else:
+                self.estadoVehiculos.cmbPapeles.setCurrentIndex(1)
+        except Exception as e:
+            pass
+
     def guardar_estado(self):
-        query = (
-            f"select id_vehiculos from ESTADOS_VEHICULOS where id_vehiculos = {self.estadoVehiculos.txtID.text()}"
-        )
-        resquery = self.db.execute_query_fetchall(query)
+        if self.valid() == True:
+            query = (
+                f"select id_vehiculos from ESTADOS_VEHICULOS where id_vehiculos = {self.estadoVehiculos.txtID.text()}"
+            )
+            resquery = self.db.execute_query_fetchall(query)
 
-        id_vehiculos = int(self.estadoVehiculos.txtID.text())
-        estado_general = self.estadoVehiculos.txtEstadoGral.text()
-        deudas = self.estadoVehiculos.cmbDeuda.currentText()
-        papeles = self.estadoVehiculos.cmbPapeles.currentText()
-        kilometraje = int(self.estadoVehiculos.txtKilometraje.text())
-        fecha_estado = self.estadoVehiculos.dtpFechaService.date().toString("yyyy-MM-dd")
-
-        if resquery == []:
-            # INSERT
-            query = ("INSERT INTO ESTADOS_VEHICULOS (id_vehiculos, estado_general, deudas, papeles, kilometraje, fecha_estado)"
-                     " VALUES(?,?,?,?,?,?)")
-            values = (id_vehiculos, estado_general, deudas, papeles, kilometraje, fecha_estado)
-
-            self.db.execute_query(query, values)
-            self.cargar_datos_estado()
-        else:
+            id_vehiculos = int(self.estadoVehiculos.txtID.text())
             estado_general = self.estadoVehiculos.txtEstadoGral.text()
             deudas = self.estadoVehiculos.cmbDeuda.currentText()
             papeles = self.estadoVehiculos.cmbPapeles.currentText()
-            kilometraje = self.estadoVehiculos.txtKilometraje.text()
+            kilometraje = int(self.estadoVehiculos.txtKilometraje.text())
             fecha_estado = self.estadoVehiculos.dtpFechaService.date().toString("yyyy-MM-dd")
-            id_vehiculos = int(self.estadoVehiculos.txtID.text())
 
-            query = (
-                "UPDATE ESTADOS_VEHICULOS SET estado_general = ?, deudas = ?, papeles = ?, kilometraje = ?, fecha_estado = ?"
-                " WHERE id_vehiculos = ?"
-            )
-            values = (estado_general, deudas, papeles, kilometraje, fecha_estado, id_vehiculos)
+            if resquery == []:
+                # INSERT
+                query = ("INSERT INTO ESTADOS_VEHICULOS (id_vehiculos, estado_general, deudas, papeles, kilometraje, fecha_estado)"
+                         " VALUES(?,?,?,?,?,?)")
+                values = (id_vehiculos, estado_general, deudas, papeles, kilometraje, fecha_estado)
 
-            self.db.execute_query(query, values)
-            self.cargar_datos_estado()
+                self.db.execute_query(query, values)
+                self.cargar_datos_estado()
+            else:
+                estado_general = self.estadoVehiculos.txtEstadoGral.text()
+                deudas = self.estadoVehiculos.cmbDeuda.currentText()
+                papeles = self.estadoVehiculos.cmbPapeles.currentText()
+                kilometraje = self.estadoVehiculos.txtKilometraje.text()
+                fecha_estado = self.estadoVehiculos.dtpFechaService.date().toString("yyyy-MM-dd")
+                id_vehiculos = int(self.estadoVehiculos.txtID.text())
+
+                query = (
+                    "UPDATE ESTADOS_VEHICULOS SET estado_general = ?, deudas = ?, papeles = ?, kilometraje = ?, fecha_estado = ?"
+                    " WHERE id_vehiculos = ?"
+                )
+                values = (estado_general, deudas, papeles, kilometraje, fecha_estado, id_vehiculos)
+
+                self.db.execute_query(query, values)
+                self.cargar_datos_estado()
+
+    def valid(self):  # Valida que almenos un campo contenga texto.
+        estado_general = self.estadoVehiculos.txtEstadoGral.text()
+        kilometraje = self.estadoVehiculos.txtKilometraje.text()
+        if (estado_general + kilometraje) == "":
+            QMessageBox.warning(self.estadoVehiculos, "Error", "Llene almenos un campo para modificar el estado.")
+            return False
+        if not kilometraje.isdigit():
+            QMessageBox.warning(self.estadoVehiculos, "Error", "El campo Kilometraje solo puede contener números.")
+            return False
+        return True

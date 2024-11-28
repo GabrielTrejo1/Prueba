@@ -102,19 +102,27 @@ class Vehiculos():
 
     def seleccionar_vehiculo(self):
         row = self.vehiculo.tblVehiculos.currentRow()
-        self.id = self.vehiculo.tblVehiculos.item(row, 0).text()  # Guardar el ID del vehículo seleccionado
-        self.vehiculo.txtMarcaAdd.setText(self.vehiculo.tblVehiculos.item(row, 1).text())
-        self.vehiculo.txtModeloAdd.setText(self.vehiculo.tblVehiculos.item(row, 2).text())
-        self.vehiculo.txtColor.setText(self.vehiculo.tblVehiculos.item(row, 3).text())
-        self.vehiculo.txtPatente.setText(self.vehiculo.tblVehiculos.item(row, 4).text())
+        # ID
+        self.id = self.vehiculo.tblVehiculos.item(row, 0).text()
+        # Marca
+        self.vehiculo.txtMarcaAdd.setText(self.vehiculo.tblVehiculos.item(row, 2).text())
+        # Modelo
+        self.vehiculo.txtModeloAdd.setText(self.vehiculo.tblVehiculos.item(row, 3).text())
+        # Color
+        self.vehiculo.txtColor.setText(self.vehiculo.tblVehiculos.item(row, 4).text())
+        # Patente
+        self.vehiculo.txtPatente.setText(self.vehiculo.tblVehiculos.item(row, 1).text())
+        # Motor
         if self.vehiculo.tblVehiculos.item(row, 5) != None:
           self.vehiculo.txtMotor.setText(self.vehiculo.tblVehiculos.item(row, 5).text())
+        # Carrocería
         if self.vehiculo.tblVehiculos.item(row, 6) != None:
           self.vehiculo.txtCarroceria.setText(self.vehiculo.tblVehiculos.item(row, 6).text())
+        # Nafta
+        self.vehiculo.cmbCombustible.setCurrentText(self.vehiculo.cmbCombustible.currentText())
+        # Detalles
         if self.vehiculo.tblVehiculos.item(row, 7) != None:
-          self.vehiculo.cmbCombustible.setCurrentText(self.vehiculo.tblVehiculos.item(row, 7).text())
-        if self.vehiculo.tblVehiculos.item(row, 8) != None:
-          self.vehiculo.txtDetalles.setText(self.vehiculo.tblVehiculos.item(row, 8).text())
+          self.vehiculo.txtDetalles.setText(self.vehiculo.tblVehiculos.item(row, 7).text())
 
     def limpiar_campos(self):
         self.vehiculo.txtMarcaAdd.clear()
